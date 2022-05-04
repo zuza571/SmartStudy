@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".ZalozKonto">
+
+    <EditText
+        android:id="@+id/imie"
+        android:layout_width="210dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="4dp"
+        android:background="#99141414"
+        android:ems="10"
+        android:hint="Imię"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/nazwisko"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/nazwisko"
+        android:layout_width="210dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="4dp"
+        android:background="#99141414"
+        android:ems="10"
+        android:hint="Nazwisko"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imie" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="210dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="4dp"
+        android:background="#99141414"
+        android:ems="10"
+        android:hint="E-mail"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/kierunekStudiow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nazwisko" />
+
+    <EditText
+        android:id="@+id/kierunekStudiow"
+        android:layout_width="210dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="4dp"
+        android:background="#99141414"
+        android:ems="10"
+        android:hint="Kierunek studiów"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/login2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <EditText
+        android:id="@+id/login2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="4dp"
+        android:background="#99141414"
+        android:ems="10"
+        android:hint="Login"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/haslo2"
+        app:layout_constraintEnd_toEndOf="@+id/haslo2"
+        app:layout_constraintStart_toStartOf="@+id/haslo2"
+        app:layout_constraintTop_toBottomOf="@+id/kierunekStudiow" />
+
+    <EditText
+        android:id="@+id/haslo2"
+        android:layout_width="210dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="70dp"
+        android:background="#99141414"
+        android:ems="10"
+        android:hint="Haslo"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/wsteczButton2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login2" />
+
+    <Button
+        android:id="@+id/wsteczButton2"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginBottom="100dp"
+        android:background="@color/black"
+        android:text="Wstecz"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/haslo2" />
+
+    <Button
+        android:id="@+id/zalozKontoButton2"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="60dp"
+        android:background="@color/black"
+        android:text="Załóż konto"
+        android:textColor="@color/white"
+        app:layout_constraintBaseline_toBaselineOf="@+id/wsteczButton2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
