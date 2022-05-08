@@ -14,31 +14,27 @@ public class ZalozKonto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zaloz_konto);
 
-        EditText im = (EditText) findViewById(R.id.imie);
-        String imie = im.getText().toString();
-
-        EditText naz = (EditText) findViewById(R.id.nazwisko);
-        String nazwisko = naz.getText().toString();
-
-        EditText mail = (EditText) findViewById(R.id.email);
-        String email = mail.getText().toString();
-
-        EditText stud = (EditText) findViewById(R.id.kierunekStudiow);
-        String kierunekStudiow = stud.getText().toString();
-
-        EditText log = (EditText) findViewById(R.id.login2);
-        String login = log.getText().toString();
-
-        EditText passwd = (EditText) findViewById(R.id.haslo2);
-        String haslo = passwd.getText().toString();
+        EditText imie_input = (EditText) findViewById(R.id.imie);
+        EditText nazwisko_imput = (EditText) findViewById(R.id.nazwisko);
+        EditText email_input = (EditText) findViewById(R.id.email);
+        EditText studia_input = (EditText) findViewById(R.id.kierunekStudiow);
+        EditText login_input = (EditText) findViewById(R.id.login2);
+        EditText haslo_input = (EditText) findViewById(R.id.haslo2);
 
         Button zalozKontoButton2 = (Button) findViewById(R.id.zalozKontoButton2);
         zalozKontoButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // wpis do bazy danych
+                BazaDanychHelper mojaDB = new BazaDanychHelper(ZalozKonto.this);
+                mojaDB.dodajUzytkownika(imie_input.getText().toString(),
+                        nazwisko_imput.getText().toString(),
+                        email_input.getText().toString(),
+                        studia_input.getText().toString(),
+                        login_input.getText().toString(),
+                        haslo_input.getText().toString());
                 // sprawdzenie czy jest taki uzytkownik
-                // dane tu?
+
                 openStart();
             }
         });
