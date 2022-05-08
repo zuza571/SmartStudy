@@ -3,24 +3,24 @@ package android.smartstudy;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
 
 public class Kalendarz extends AppCompatActivity implements KalendarzAdapter.OnItemListener {
     private TextView aktualnyMiesiac;
     private TextView poprzedniMiesiac;
     private TextView nastepnyMiesiac;
-    private RecyclerView recyclerView; // okno z wszytskimi dniami
+    private RecyclerView recyclerView; // okno z wszystkimi dniami
     private LocalDate wybranaData;
+    private TextView komorka_kalendarza;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,7 @@ public class Kalendarz extends AppCompatActivity implements KalendarzAdapter.OnI
         initWidgets();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             wybranaData = LocalDate.now();
+
         }
         setWidokMiesiaca();
     }
@@ -73,7 +74,9 @@ public class Kalendarz extends AppCompatActivity implements KalendarzAdapter.OnI
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             pierwszyMiesiac = wybranaData.withDayOfMonth(1);
         }
+
         int dzienTygodnia = 0;
+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             dzienTygodnia = pierwszyMiesiac.getDayOfWeek().getValue();
         }
@@ -102,14 +105,14 @@ public class Kalendarz extends AppCompatActivity implements KalendarzAdapter.OnI
 
     // ----------------------------------------
     // zmiana miesiaca po kliknieciu przyciskow
-    public void poprzedniMiesiac(View widok) {
+    public void poprzedniMiesiac(View v) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             wybranaData = wybranaData.minusMonths(1);
         }
         setWidokMiesiaca();
     }
 
-    public void nastepnyMiesiac(View widok) {
+    public void nastepnyMiesiac(View v) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             wybranaData = wybranaData.plusMonths(1);
         }

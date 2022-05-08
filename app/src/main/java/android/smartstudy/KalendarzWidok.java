@@ -9,15 +9,16 @@ public class KalendarzWidok extends RecyclerView.ViewHolder implements View.OnCl
     public final TextView dniMiesiaca;
     private final KalendarzAdapter.OnItemListener listener;
 
-    public KalendarzWidok(@NonNull View widok, KalendarzAdapter.OnItemListener listener) {
-        super(widok);
+    public KalendarzWidok(@NonNull View itemView, KalendarzAdapter.OnItemListener listener) {
+        super(itemView);
         this.listener = listener;
-        dniMiesiaca = itemView.findViewById(R.id.komorkaKalendarza);
-        itemView.setOnClickListener(this);
+
+        dniMiesiaca = this.itemView.findViewById(R.id.komorkaKalendarza);
+        this.itemView.setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View widok_) {
+    public void onClick(View v) {
         listener.onItemClick(getAdapterPosition(), (String) dniMiesiaca.getText());
     }
 }
