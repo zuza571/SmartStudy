@@ -7,4 +7,16 @@
     android:background="@color/white"
     tools:context=".MainPage">
 
+    <Button
+        android:id="@+id/kalendarzButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="460dp"
+        android:background="@color/black"
+        android:text="Kalendarz"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

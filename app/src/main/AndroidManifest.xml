@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".PlanZajec"
+            android:exported="false" />
+        <activity
+            android:name=".Kalendarz"
+            android:exported="false" />
+        <activity
             android:name=".MainPage"
             android:exported="false" />
         <activity
