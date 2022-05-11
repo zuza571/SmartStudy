@@ -7,13 +7,12 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".Calendar">
+    tools:context=".CalendarMain">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp">
 
         <Button
@@ -50,6 +49,16 @@
             android:onClick="nextMonth"/>
 
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:background="@null"
+        android:layout_marginBottom="10dp"
+        android:text="Wróć do aktualnej daty"
+        android:onClick="currentMonth"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -124,6 +133,25 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="5" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:text="Dodaj nową notatkę"
+        android:textColor="@color/black"
+        android:onClick="newNote" />
+
+    <ListView
+        android:id="@+id/notesList"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.2"
+        android:dividerHeight="0sp"
+        android:scrollbarSize="@dimen/fragment_vertical_margin" />
 
 </LinearLayout>
