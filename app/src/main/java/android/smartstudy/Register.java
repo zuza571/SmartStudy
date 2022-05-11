@@ -8,8 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class Register extends AppCompatActivity {
-    EditText name_input, surname_input, email_input, fieldOfStudies_input,
-    login_input, password_input;
+    EditText name_input, surname_input, fieldOfStudies_input, login_input, password_input;
     Button registerButton, backButton;
 
     @Override
@@ -19,7 +18,6 @@ public class Register extends AppCompatActivity {
 
         name_input = (EditText) findViewById(R.id.name);
         surname_input = (EditText) findViewById(R.id.surname);
-        email_input = (EditText) findViewById(R.id.email);
         fieldOfStudies_input = (EditText) findViewById(R.id.fieldOfStudies);
         login_input = (EditText) findViewById(R.id.login_register);
         password_input = (EditText) findViewById(R.id.password_register);
@@ -33,7 +31,6 @@ public class Register extends AppCompatActivity {
                 DataBaseHelper myDB = new DataBaseHelper(Register.this);
                 myDB.addUser(name_input.getText().toString(),
                         surname_input.getText().toString(),
-                        email_input.getText().toString(),
                         fieldOfStudies_input.getText().toString(),
                         login_input.getText().toString(),
                         password_input.getText().toString());
