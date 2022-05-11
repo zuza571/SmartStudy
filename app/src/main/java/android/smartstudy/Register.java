@@ -8,19 +8,23 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class Register extends AppCompatActivity {
-    EditText name_input = (EditText) findViewById(R.id.name);
-    EditText surname_input = (EditText) findViewById(R.id.surname);
-    EditText email_input = (EditText) findViewById(R.id.email);
-    EditText fieldOfStudies_input = (EditText) findViewById(R.id.fieldOfStudies);
-    EditText login_input = (EditText) findViewById(R.id.login_register);
-    EditText password_input = (EditText) findViewById(R.id.password_register);
-    Button registerButton = (Button) findViewById(R.id.registerButton);
-    Button backButton = (Button) findViewById(R.id.backButtonRegister);
+    EditText name_input, surname_input, email_input, fieldOfStudies_input,
+    login_input, password_input;
+    Button registerButton, backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        name_input = (EditText) findViewById(R.id.name);
+        surname_input = (EditText) findViewById(R.id.surname);
+        email_input = (EditText) findViewById(R.id.email);
+        fieldOfStudies_input = (EditText) findViewById(R.id.fieldOfStudies);
+        login_input = (EditText) findViewById(R.id.login_register);
+        password_input = (EditText) findViewById(R.id.password_register);
+        registerButton = (Button) findViewById(R.id.registerButton);
+        backButton = (Button) findViewById(R.id.backButtonRegister);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -14,30 +14,24 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Calendar extends AppCompatActivity implements CalendarAdapter.OnItemListener {
-    private TextView currentMonth;
-    private TextView previousMonth;
-    private TextView nextMonth;
+    private TextView currentMonth, previousMonth, nextMonth, calendar_cell;
     private RecyclerView recyclerView; // okno z wszystkimi dniami
     private LocalDate selectedDate;
-    private TextView calendar_cell;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-        initWidgets();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            selectedDate = LocalDate.now();
-        }
-        setMonthView();
-    }
 
-    // pobranie z widokow
-    private void initWidgets() {
         recyclerView = findViewById(R.id.recyclerView);
         currentMonth = findViewById(R.id.currentMonth);
         previousMonth = findViewById(R.id.previousMonthButton);
         nextMonth = findViewById(R.id.nextMonthButton);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            selectedDate = LocalDate.now();
+        }
+        setMonthView();
     }
 
     private void setMonthView() {

@@ -7,13 +7,15 @@ import android.view.View;
 import android.widget.Button;
 
 public class Start extends AppCompatActivity {
-    Button loginButton = (Button) findViewById(R.id.loginButtonStart);
-    Button registerButton = (Button) findViewById(R.id.registerButtonStart);
+    Button loginButton, registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        loginButton = (Button) findViewById(R.id.loginButtonStart);
+        registerButton = (Button) findViewById(R.id.registerButtonStart);
 
         // onclick listener do loginButton
         loginButton.setOnClickListener(new View.OnClickListener() {

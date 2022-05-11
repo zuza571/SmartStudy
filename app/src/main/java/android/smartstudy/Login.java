@@ -8,15 +8,18 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class Login extends AppCompatActivity {
-    EditText log = (EditText) findViewById(R.id.login);
-    EditText passwd = (EditText) findViewById(R.id.password);
-    Button loginButton = (Button) findViewById(R.id.loginButton);
-    Button backButton = (Button) findViewById(R.id.backButton);
+   EditText log, passwd;
+   Button loginButton, backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        log = (EditText) findViewById(R.id.login);
+        passwd = (EditText) findViewById(R.id.password);
+        loginButton = (Button) findViewById(R.id.loginButton);
+        backButton = (Button) findViewById(R.id.backButton);
 
         // zczytywanie loginu i hasla
         String login = log.getText().toString();
