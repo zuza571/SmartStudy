@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class Login extends AppCompatActivity {
-   EditText log, passwd;
+   EditText login_input, password_input;
    Button loginButton, backButton;
 
     @Override
@@ -16,14 +16,14 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        log = (EditText) findViewById(R.id.login);
-        passwd = (EditText) findViewById(R.id.password);
-        loginButton = (Button) findViewById(R.id.loginButton);
-        backButton = (Button) findViewById(R.id.backButton);
+        login_input = findViewById(R.id.login);
+        password_input = findViewById(R.id.password);
+        loginButton = findViewById(R.id.loginButton);
+        backButton = findViewById(R.id.backButton);
 
         // zczytywanie loginu i hasla
-        String login = log.getText().toString();
-        String password = passwd.getText().toString();
+        String login = login_input.getText().toString();
+        String password = password_input.getText().toString();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override

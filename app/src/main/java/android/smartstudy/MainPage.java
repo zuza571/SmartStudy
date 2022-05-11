@@ -14,7 +14,7 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
-        calendarButton = (Button) findViewById(R.id.calendarButton);
+        calendarButton = findViewById(R.id.calendarButton);
 
         calendarButton.setOnClickListener(new View.OnClickListener() {
             @Override

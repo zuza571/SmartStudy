@@ -16,13 +16,13 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        name_input = (EditText) findViewById(R.id.name);
-        surname_input = (EditText) findViewById(R.id.surname);
-        fieldOfStudies_input = (EditText) findViewById(R.id.fieldOfStudies);
-        login_input = (EditText) findViewById(R.id.login_register);
-        password_input = (EditText) findViewById(R.id.password_register);
-        registerButton = (Button) findViewById(R.id.registerButton);
-        backButton = (Button) findViewById(R.id.backButtonRegister);
+        name_input = findViewById(R.id.name);
+        surname_input = findViewById(R.id.surname);
+        fieldOfStudies_input = findViewById(R.id.fieldOfStudies);
+        login_input = findViewById(R.id.login_register);
+        password_input = findViewById(R.id.password_register);
+        registerButton = findViewById(R.id.registerButton);
+        backButton = findViewById(R.id.backButtonRegister);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
