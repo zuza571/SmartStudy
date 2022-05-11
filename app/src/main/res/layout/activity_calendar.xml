@@ -25,7 +25,7 @@
             android:text="prev"
             android:textColor="@color/black"
             android:textSize="15sp"
-            android:onClick="poprzedniMiesiac"/>
+            android:onClick="previousMonth"/>
 
         <TextView
             android:id="@+id/currentMonth"
@@ -47,7 +47,7 @@
             android:text="next"
             android:textColor="@color/black"
             android:textSize="15sp"
-            android:onClick="nastepnyMiesiac"/>
+            android:onClick="nextMonth"/>
 
     </LinearLayout>
 
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="PON"
-            android:textColor="@color/design_default_color_primary"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="WTO"
-            android:textColor="@color/design_default_color_primary"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="ŚR"
-            android:textColor="@color/design_default_color_primary"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="CZW"
-            android:textColor="@color/design_default_color_primary"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="PT"
-            android:textColor="@color/design_default_color_primary"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="SOB"
-            android:textColor="@color/design_default_color_primary"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -115,7 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="NIEDZ"
-            android:textColor="@color/design_default_color_primary"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
 

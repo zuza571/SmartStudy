@@ -12,7 +12,6 @@ public class CalendarView extends RecyclerView.ViewHolder implements View.OnClic
     public CalendarView(@NonNull View itemView, CalendarAdapter.OnItemListener listener) {
         super(itemView);
         this.listener = listener;
-
         daysOfMonth = this.itemView.findViewById(R.id.calendarCell);
         this.itemView.setOnClickListener(this);
     }

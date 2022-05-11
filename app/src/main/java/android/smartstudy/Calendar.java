@@ -41,12 +41,12 @@ public class Calendar extends AppCompatActivity implements CalendarAdapter.OnIte
     }
 
     private void setMonthView() {
-        currentMonth.setText(data(selectedDate));
+        currentMonth.setText(dateFormatter(selectedDate));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            previousMonth.setText(data(selectedDate.minusMonths(1)));
+            previousMonth.setText(dateFormatter(selectedDate.minusMonths(1)));
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            nextMonth.setText(data(selectedDate.plusMonths(1)));
+            nextMonth.setText(dateFormatter(selectedDate.plusMonths(1)));
         }
         ArrayList<String> daysOfMonth = daysOfMonthListMethod(selectedDate);
 
@@ -92,10 +92,9 @@ public class Calendar extends AppCompatActivity implements CalendarAdapter.OnIte
     }
 
     // zmiana daty na String
-    private String data(LocalDate date) {
-        DateTimeFormatter formatter = null;
+    private String dateFormatter(LocalDate date) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
             return date.format(formatter);
         } else
             return "";
@@ -103,14 +102,14 @@ public class Calendar extends AppCompatActivity implements CalendarAdapter.OnIte
 
     // ----------------------------------------
     // zmiana miesiaca po kliknieciu przyciskow
-    public void poprzedniMiesiac(View view) {
+    public void previousMonth(View view) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             selectedDate = selectedDate.minusMonths(1);
         }
         setMonthView();
     }
 
-    public void nastepnyMiesiac(View view) {
+    public void nextMonth(View view) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             selectedDate = selectedDate.plusMonths(1);
         }
@@ -122,7 +121,7 @@ public class Calendar extends AppCompatActivity implements CalendarAdapter.OnIte
     @Override
     public void onItemClick(int position, String day) {
         if (!day.equals("")) {
-            String text = "Wybrana Data: " + day + " " + data(selectedDate);
+            String text = "Wybrana Data: " + day + " " + dateFormatter(selectedDate);
             Toast.makeText(this, text, Toast.LENGTH_LONG).show();
         }
 
