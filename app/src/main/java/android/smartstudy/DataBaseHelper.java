@@ -43,6 +43,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         // stworzy nową tabelę
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        // tworzenie nowej tabeli
         onCreate(db);
     }
 
