@@ -29,11 +29,7 @@ public class Register extends AppCompatActivity {
             public void onClick(View view) {
                 // wpis do bazy danych
                 DataBaseHelper myDB = new DataBaseHelper(Register.this);
-                myDB.addUser(name_input.getText().toString(),
-                        surname_input.getText().toString(),
-                        fieldOfStudies_input.getText().toString(),
-                        login_input.getText().toString(),
-                        password_input.getText().toString());
+                myDB.addUser(new User());
                 // sprawdzenie czy jest taki uzytkownik
 
                 openStart();

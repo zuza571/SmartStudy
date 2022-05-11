@@ -10,19 +10,19 @@ import android.widget.Toast;
 public class DataBaseHelper extends SQLiteOpenHelper {
 
     private Context context;
-    private final static String DATABASE_NAME = "SmartStudyBazaDanych.db";
-    private final static int DATABASE_VERSION = 1;
+    // tabela 1
+    private final static String DATABASE_NAME = "SmartStudyDataBase.db";
 
-    private final static String TABLE_NAME = "Użytkownicy";
-    private final static String TABLE_COLUMN_ID = "id";
-    private final static String TABLE_COLUMN_NAME = "Imię";
-    private final static String TABLE_COLUMN_SURNAME = "Nazwisko";
-    private final static String TABLE_COLUMN_UNIVERISTY = "Studia";
+    private final static String TABLE_NAME = "Users";
+    private final static String TABLE_COLUMN_ID = "Id";
+    private final static String TABLE_COLUMN_NAME = "Name";
+    private final static String TABLE_COLUMN_SURNAME = "Surname";
+    private final static String TABLE_COLUMN_UNIVERISTY = "Study";
     private final static String TABLE_COLUMN_LOGIN = "Login";
-    private final static String TABLE_COLUMN_PASSWORD = "Haslo";
+    private final static String TABLE_COLUMN_PASSWORD = "Password";
 
     public DataBaseHelper(@Nullable Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, 1);
         this.context = context;
     }
 
@@ -40,19 +40,21 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+
+        // stworzy nową tabelę
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
 
-    void addUser(String imie, String nazwisko, String studia, String login, String haslo) {
+    void addUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(TABLE_COLUMN_NAME, imie);
-        cv.put(TABLE_COLUMN_SURNAME, nazwisko);
-        cv.put(TABLE_COLUMN_UNIVERISTY, studia);
-        cv.put(TABLE_COLUMN_LOGIN, login);
-        cv.put(TABLE_COLUMN_PASSWORD, haslo);
+        cv.put(TABLE_COLUMN_NAME, user.getName());
+        cv.put(TABLE_COLUMN_SURNAME, user.getSurname());
+        cv.put(TABLE_COLUMN_UNIVERISTY, user.getUniversity());
+        cv.put(TABLE_COLUMN_LOGIN, user.getLogin());
+        cv.put(TABLE_COLUMN_PASSWORD, user.getPassword());
 
         long rezultat = db.insert(TABLE_NAME, null, cv);
         if(rezultat == -1) {
