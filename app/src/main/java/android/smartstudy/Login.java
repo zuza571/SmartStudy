@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
    EditText login_input, password_input;
    Button loginButton, backButton;
+   DataBaseHelper myDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,7 @@ public class Login extends AppCompatActivity {
         password_input = findViewById(R.id.password);
         loginButton = findViewById(R.id.loginButton);
         backButton = findViewById(R.id.backButton);
+        myDB = new DataBaseHelper(Login.this);
 
         // zczytywanie loginu i hasla
         String login = login_input.getText().toString();
@@ -28,10 +31,12 @@ public class Login extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // password i login tu?
-                // zapytanie bazy danych
-                // sprobuj jeszcze raz
-                openMainPage();
+                // logowanie przez sprawdzenie bazy danych
+                if (myDB.login_user(login_input.getText().toString(), password_input.getText().toString())) {
+                    openMainPage();
+                } else {
+                    Toast.makeText(Login.this, "Spróbuj jeszcze raz!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

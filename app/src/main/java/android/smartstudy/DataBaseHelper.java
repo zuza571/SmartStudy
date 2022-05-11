@@ -2,6 +2,7 @@ package android.smartstudy;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
@@ -57,11 +58,32 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(TABLE_COLUMN_LOGIN, user.getLogin());
         cv.put(TABLE_COLUMN_PASSWORD, user.getPassword());
 
-        long rezultat = db.insert(TABLE_NAME, null, cv);
-        if(rezultat == -1) {
+        long result = db.insert(TABLE_NAME, null, cv);
+        if(result == -1) {
             Toast.makeText(context, "Bład wprowadzenia danych do bazy danych.", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Dodano Użytkownika!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    boolean login_user(String login, String password) {
+        String queryLogin = "SELECT " + TABLE_COLUMN_LOGIN +  " FROM " + TABLE_NAME;
+        String queryPassword = "SELECT " + TABLE_COLUMN_PASSWORD + " FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursorLogin = db.rawQuery(queryLogin, null);
+        Cursor cursorPassword = db.rawQuery(queryPassword, null);
+
+        cursorLogin.moveToFirst();
+        cursorPassword.moveToFirst();
+        while(cursorLogin.isAfterLast() == false) {
+            if (cursorLogin.getString(0).equals(login) && cursorPassword.getString(0).equals(password)) {
+                return true;
+            }
+            cursorLogin.moveToNext();
+            cursorPassword.moveToNext();
+        }
+
+        return false;
     }
 }
