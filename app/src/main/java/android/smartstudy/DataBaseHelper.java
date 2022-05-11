@@ -17,7 +17,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private final static String TABLE_COLUMN_ID = "id";
     private final static String TABLE_COLUMN_NAME = "Imię";
     private final static String TABLE_COLUMN_SURNAME = "Nazwisko";
-    private final static String TABLE_COLUMN_EMAIL = "E-mail";
     private final static String TABLE_COLUMN_UNIVERISTY = "Studia";
     private final static String TABLE_COLUMN_LOGIN = "Login";
     private final static String TABLE_COLUMN_PASSWORD = "Haslo";
@@ -33,7 +32,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                         " (" + TABLE_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         TABLE_COLUMN_NAME + " TEXT, " +
                         TABLE_COLUMN_SURNAME + " TEXT, " +
-                        TABLE_COLUMN_EMAIL + " TEXT, " +
                         TABLE_COLUMN_UNIVERISTY + " TEXT, " +
                         TABLE_COLUMN_LOGIN + " TEXT, " +
                         TABLE_COLUMN_PASSWORD + " TEXT);";
@@ -52,7 +50,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         cv.put(TABLE_COLUMN_NAME, imie);
         cv.put(TABLE_COLUMN_SURNAME, nazwisko);
-        cv.put(TABLE_COLUMN_EMAIL, email);
         cv.put(TABLE_COLUMN_UNIVERISTY, studia);
         cv.put(TABLE_COLUMN_LOGIN, login);
         cv.put(TABLE_COLUMN_PASSWORD, haslo);
