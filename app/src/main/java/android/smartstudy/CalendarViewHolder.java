@@ -8,13 +8,13 @@ import android.widget.TextView;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class CalendarView extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class CalendarViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public final ArrayList<LocalDate> days;
     public final View parentView;
     public final TextView daysOfMonth;
     private final CalendarAdapter.OnItemListener listener;
 
-    public CalendarView(@NonNull View itemView, CalendarAdapter.OnItemListener listener, ArrayList<LocalDate> days) {
+    public CalendarViewHolder(@NonNull View itemView, CalendarAdapter.OnItemListener listener, ArrayList<LocalDate> days) {
         super(itemView);
         parentView = itemView.findViewById(R.id.parentView);
         daysOfMonth = this.itemView.findViewById(R.id.calendarCell);
