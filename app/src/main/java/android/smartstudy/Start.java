@@ -7,38 +7,38 @@ import android.view.View;
 import android.widget.Button;
 
 public class Start extends AppCompatActivity {
+    Button loginButton = (Button) findViewById(R.id.loginButtonStart);
+    Button registerButton = (Button) findViewById(R.id.registerButtonStart);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        // onclick listener do zalogujButton
-        Button zalogujButton = (Button) findViewById(R.id.zalogujButton);
-        zalogujButton.setOnClickListener(new View.OnClickListener() {
+        // onclick listener do loginButton
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                openZaloguj();
+            public void onClick(View view) {
+                openLoginActivity();
             }
         });
 
-        Button zalozKontoButton = (Button) findViewById(R.id.zalozKontoButton);
-        zalozKontoButton.setOnClickListener(new View.OnClickListener() {
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                openZalozKonto();
+            public void onClick(View view) {
+                openRegisterActivity();
             }
         });
     }
 
     // otwarcie nowego okna
-    public void openZaloguj() {
-        Intent intent = new Intent(this, Zaloguj.class);
+    public void openLoginActivity() {
+        Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
 
-    public void openZalozKonto() {
-        Intent intent = new Intent(this, ZalozKonto.class);
+    public void openRegisterActivity() {
+        Intent intent = new Intent(this, Register.class);
         startActivity(intent);
     }
 }

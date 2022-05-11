@@ -7,33 +7,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class Zaloguj extends AppCompatActivity {
+public class Login extends AppCompatActivity {
+    EditText log = (EditText) findViewById(R.id.login);
+    EditText passwd = (EditText) findViewById(R.id.password);
+    Button loginButton = (Button) findViewById(R.id.loginButton);
+    Button backButton = (Button) findViewById(R.id.backButton);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_zaloguj);
+        setContentView(R.layout.activity_login);
 
         // zczytywanie loginu i hasla
-        EditText log = (EditText) findViewById(R.id.login);
         String login = log.getText().toString();
+        String password = passwd.getText().toString();
 
-        EditText passwd = (EditText) findViewById(R.id.haslo);
-        String haslo = passwd.getText().toString();
-
-        Button zalogujButton2 = (Button) findViewById(R.id.zalogujButton2);
-        zalogujButton2.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                // haslo i login tu?
+            public void onClick(View view) {
+                // password i login tu?
                 // zapytanie bazy danych
                 // sprobuj jeszcze raz
                 openMainPage();
             }
         });
 
-        Button wsteczButton = (Button) findViewById(R.id.wsteczButton);
-        wsteczButton.setOnClickListener(new View.OnClickListener() {
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openStart();

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
 
-public class BazaDanychHelper extends SQLiteOpenHelper {
+public class DataBaseHelper extends SQLiteOpenHelper {
 
     private Context context;
     private final static String DATABASE_NAME = "SmartStudyBazaDanych.db";
@@ -22,7 +22,7 @@ public class BazaDanychHelper extends SQLiteOpenHelper {
     private final static String TABLE_COLUMN_LOGIN = "Login";
     private final static String TABLE_COLUMN_PASSWORD = "Haslo";
 
-    public BazaDanychHelper(@Nullable Context context) {
+    public DataBaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
@@ -46,7 +46,7 @@ public class BazaDanychHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void dodajUzytkownika(String imie, String nazwisko, String email, String studia, String login, String haslo) {
+    void addUser(String imie, String nazwisko, String email, String studia, String login, String haslo) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 

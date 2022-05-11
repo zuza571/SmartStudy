@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".ZalozKonto">
+    tools:context=".Register">
 
     <EditText
-        android:id="@+id/imie"
+        android:id="@+id/name"
         android:layout_width="210dp"
         android:layout_height="0dp"
         android:layout_marginTop="120dp"
@@ -20,13 +20,13 @@
         android:minHeight="48dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/nazwisko"
+        app:layout_constraintBottom_toTopOf="@+id/surname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/nazwisko"
+        android:id="@+id/surname"
         android:layout_width="210dp"
         android:layout_height="0dp"
         android:layout_marginBottom="4dp"
@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imie" />
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <EditText
         android:id="@+id/email"
@@ -55,13 +55,13 @@
         android:minHeight="48dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/kierunekStudiow"
+        app:layout_constraintBottom_toTopOf="@+id/fieldOfStudies"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nazwisko" />
+        app:layout_constraintTop_toBottomOf="@+id/surname" />
 
     <EditText
-        android:id="@+id/kierunekStudiow"
+        android:id="@+id/fieldOfStudies"
         android:layout_width="210dp"
         android:layout_height="0dp"
         android:layout_marginBottom="4dp"
@@ -72,13 +72,13 @@
         android:minHeight="48dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/login2"
+        app:layout_constraintBottom_toTopOf="@+id/login_register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <EditText
-        android:id="@+id/login2"
+        android:id="@+id/login_register"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="4dp"
@@ -89,13 +89,13 @@
         android:minHeight="48dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/haslo2"
-        app:layout_constraintEnd_toEndOf="@+id/haslo2"
-        app:layout_constraintStart_toStartOf="@+id/haslo2"
-        app:layout_constraintTop_toBottomOf="@+id/kierunekStudiow" />
+        app:layout_constraintBottom_toTopOf="@+id/password_register"
+        app:layout_constraintEnd_toEndOf="@+id/password_register"
+        app:layout_constraintStart_toStartOf="@+id/password_register"
+        app:layout_constraintTop_toBottomOf="@+id/fieldOfStudies" />
 
     <EditText
-        android:id="@+id/haslo2"
+        android:id="@+id/password_register"
         android:layout_width="210dp"
         android:layout_height="0dp"
         android:layout_marginBottom="70dp"
@@ -106,13 +106,13 @@
         android:minHeight="48dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/wsteczButton2"
+        app:layout_constraintBottom_toTopOf="@+id/backButtonRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login2" />
+        app:layout_constraintTop_toBottomOf="@+id/login_register" />
 
     <Button
-        android:id="@+id/wsteczButton2"
+        android:id="@+id/backButtonRegister"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginStart="72dp"
@@ -122,17 +122,17 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/haslo2" />
+        app:layout_constraintTop_toBottomOf="@+id/password_register" />
 
     <Button
-        android:id="@+id/zalozKontoButton2"
+        android:id="@+id/registerButton"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginEnd="60dp"
         android:background="@color/black"
         android:text="Załóż konto"
         android:textColor="@color/white"
-        app:layout_constraintBaseline_toBaselineOf="@+id/wsteczButton2"
+        app:layout_constraintBaseline_toBaselineOf="@+id/backButtonRegister"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

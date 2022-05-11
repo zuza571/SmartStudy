@@ -7,22 +7,22 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainPage extends AppCompatActivity {
+    Button calendarButton = (Button) findViewById(R.id.calendarButton);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
-        Button kalendzarzButton = (Button) findViewById(R.id.kalendarzButton);
-        kalendzarzButton.setOnClickListener(new View.OnClickListener() {
+        calendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                openKalendzarz();
+            public void onClick(View view) {
+                openCalendar();
             }
         });
     }
-    public void openKalendzarz() {
-        Intent intent = new Intent(this, Kalendarz.class);
+    public void openCalendar() {
+        Intent intent = new Intent(this, Calendar.class);
         startActivity(intent);
     }
 }
