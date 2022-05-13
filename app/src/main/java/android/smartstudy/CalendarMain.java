@@ -39,6 +39,20 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         CalendarOperations.selectedDate = LocalDate.now();
         setMonthView();
 
+        // nie dziala
+        /*
+        // wybrana notatka do usuniecia
+        ArrayAdapter<Note> adapter = new ArrayAdapter<Note>(CalendarMain.this, android.R.layout.simple_list_item_1, Note.notes);
+        notesList.setAdapter(adapter);
+
+        notesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Toast.makeText(CalendarMain.this, Note.selectedNote.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+         */
+
         goToCurrentMonth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +83,7 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         recyclerView.setAdapter(calendarAdapter);
         setNoteAdapter();
 
+        // wroc do aktualnej daty
         if (CalendarOperations.selectedDate.getMonth().equals(LocalDate.now().getMonth()) &&
                 CalendarOperations.selectedDate.getYear() == LocalDate.now().getYear()) {
             // niewidoczny, gdy jestesmy na aktualnym miesiacu
@@ -76,6 +91,15 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         } else {
             goToCurrentMonth.setVisibility(View.VISIBLE);
         }
+
+        /*
+        // usun notatke
+        if (Note.selectedNote.equals(null)) {
+            deleteNote.setVisibility(View.INVISIBLE);
+        } else {
+            deleteNote.setVisibility(View.VISIBLE);
+        }
+         */
     }
 
     // ----------------------------------------
@@ -86,7 +110,7 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
     }
 
     public void nextMonth(View view) {
-       CalendarOperations.selectedDate = CalendarOperations.selectedDate.plusMonths(1);
+        CalendarOperations.selectedDate = CalendarOperations.selectedDate.plusMonths(1);
         setMonthView();
     }
     // ----------------------------------------

@@ -8,11 +8,10 @@ public class Note {
     private String name;
     private LocalDate date;
     public static Note selectedNote;
+    public static ArrayList<Note> notes = new ArrayList<>();
 
     // przypisanie do daty
     public static ArrayList<Note> notesForDate(LocalDate date) {
-        ArrayList<Note> notes = new ArrayList<>();
-
         for (Note note : notesList) {
             if(note.getDate().equals(date))
                 notes.add(note);
