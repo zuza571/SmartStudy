@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DataBaseHelper extends SQLiteOpenHelper {
 
     private Context context;
@@ -85,5 +88,32 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
 
         return false;
+    }
+
+    List<String> current_user_data(String login) {
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + TABLE_COLUMN_LOGIN + " = " + "login";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursorUser = db.rawQuery(query, null);
+        cursorUser.moveToFirst();
+
+        List<String> currentUserData = new ArrayList<String>();
+
+        int i = 0;
+        while(i < 6){
+           switch(i) {
+               case 0:
+               case 1:
+               case 2:
+               case 3:
+               case 4:
+               case 5:
+                   currentUserData.add(cursorUser.getString(i));
+                   break;
+               default: break;
+           }
+           i++;
+        }
+        return currentUserData;
     }
 }

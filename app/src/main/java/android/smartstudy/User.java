@@ -1,5 +1,8 @@
 package android.smartstudy;
 
+import java.nio.channels.InterruptedByTimeoutException;
+import java.util.List;
+
 public class User {
     private int id;
     private String name;
@@ -64,5 +67,16 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    User current_user (User currentUser, List<String> data){
+        int x = Integer.parseInt(data.get(0));
+        currentUser.setId(x);
+        currentUser.setName(data.get(1));
+        currentUser.setSurname(data.get(2));
+        currentUser.setUniversity(data.get(3));
+        currentUser.setLogin(data.get(4));
+        currentUser.setPassword(data.get(5));
+        return currentUser;
     }
 }

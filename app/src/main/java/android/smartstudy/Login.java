@@ -8,10 +8,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Login extends AppCompatActivity {
    EditText login_input, password_input;
    Button loginButton, backButton;
    DataBaseHelper myDB;
+   User currentUser;
+   List<String> currentUserData = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +28,7 @@ public class Login extends AppCompatActivity {
         loginButton = findViewById(R.id.loginButton);
         backButton = findViewById(R.id.backButton);
         myDB = new DataBaseHelper(Login.this);
+        currentUser = new User();
 
         // zczytywanie loginu i hasla
         String login = login_input.getText().toString();
@@ -33,6 +39,9 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 // logowanie przez sprawdzenie bazy danych
                 if (myDB.login_user(login_input.getText().toString(), password_input.getText().toString())) {
+                    // wpiasanie danych do currentUser
+                    currentUserData.addAll(myDB.current_user_data(login_input.getText().toString()));
+                    currentUser.current_user(currentUser, currentUserData);
                     openMainPage();
                 } else {
                     Toast.makeText(Login.this, "Spróbuj jeszcze raz!", Toast.LENGTH_SHORT).show();
