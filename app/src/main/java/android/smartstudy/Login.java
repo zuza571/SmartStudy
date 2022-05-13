@@ -30,10 +30,6 @@ public class Login extends AppCompatActivity {
         myDB = new DataBaseHelper(Login.this);
         currentUser = new User();
 
-        // zczytywanie loginu i hasla
-        String login = login_input.getText().toString();
-        String password = password_input.getText().toString();
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

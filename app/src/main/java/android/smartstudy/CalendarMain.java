@@ -51,7 +51,6 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
             @Override
             public void onClick(View view) {
                 Note.notesList.remove(Note.selectedNote);
-                System.out.println("a");
                 setMonthView();
             }
         });
@@ -120,8 +119,10 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
     // wybrana notatka
     @Override
     public void onItemClick(int position, Note note) {
+        System.out.println("click");
         if (note != null) {
             Note.selectedNote = note;
+            System.out.println("toast");
             Toast.makeText(CalendarMain.this, note.toString(), Toast.LENGTH_LONG).show();
             setMonthView();
         }
