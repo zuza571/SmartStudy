@@ -7,6 +7,7 @@ public class Note {
     public static ArrayList<Note> notesList = new ArrayList<>();
     private String name;
     private LocalDate date;
+    public static Note selectedNote;
 
     // przypisanie do daty
     public static ArrayList<Note> notesForDate(LocalDate date) {

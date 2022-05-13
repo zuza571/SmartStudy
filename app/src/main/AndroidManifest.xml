@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name=".EditNote"
+            android:name=".AddNote"
             android:exported="false" />
         <activity
             android:name=".Schedule"

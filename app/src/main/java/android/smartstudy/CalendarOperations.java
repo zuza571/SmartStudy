@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class CalendarOperations {
-    public static LocalDate selectedDate;
+    public static LocalDate selectedDate, firstOfMonth;
 
     // formatowanie daty
     public static String dateFormatter(LocalDate date) {
@@ -29,7 +29,7 @@ public class CalendarOperations {
         // ile dni w miesiacu
         int daysOfMonth = yearMonth.lengthOfMonth();
 
-        LocalDate firstOfMonth = CalendarOperations.selectedDate.withDayOfMonth(1);
+        firstOfMonth = CalendarOperations.selectedDate.withDayOfMonth(1);
         int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
 
         for (int i=1; i<=42; i++) {
