@@ -106,8 +106,6 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         setNoteAdapter();
     }
 
-    ////
-
     private void setNoteAdapter() {
         ArrayList<Note> dayilyNotes = Note.notesForDate(CalendarOperations.selectedDate);
         NoteAdapter noteAdapter = new NoteAdapter(getApplicationContext(), dayilyNotes);
