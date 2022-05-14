@@ -3,12 +3,15 @@ package android.smartstudy;
 import static android.smartstudy.CalendarOperations.monthYearFormatter;
 import static android.smartstudy.CalendarOperations.daysOfMonthMethod;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,6 +19,7 @@ import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CalendarMain extends AppCompatActivity implements CalendarAdapter.OnItemListener, NoteAdapter.OnItemListener {
     private TextView currentMonth, previousMonth, nextMonth;
@@ -39,10 +43,15 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         CalendarOperations.selectedDate = LocalDate.now();
         setMonthView();
 
+        //------------------------------------------------------------------------------------------
         // nie dziala
+
+
         /*
+        String notesListToString = notesList.toString();
+
         // wybrana notatka do usuniecia
-        ArrayAdapter<Note> adapter = new ArrayAdapter<Note>(CalendarMain.this, android.R.layout.simple_list_item_1, Note.notes);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, notesListToString);
         notesList.setAdapter(adapter);
         notesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -50,7 +59,10 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
                 Toast.makeText(CalendarMain.this, Note.selectedNote.toString(), Toast.LENGTH_SHORT).show();
             }
         });
+
          */
+
+        //------------------------------------------------------------------------------------------
 
         goToCurrentMonth.setOnClickListener(new View.OnClickListener() {
             @Override
