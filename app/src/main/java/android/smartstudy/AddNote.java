@@ -9,10 +9,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AddNote extends AppCompatActivity {
     private EditText noteName;
     private TextView noteDate;
     private Button saveEdition;
+    User currentUser;
+    String login;
+    List<String> currentUserData;
+    DataBaseHelper myDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +29,16 @@ public class AddNote extends AppCompatActivity {
         noteName = findViewById(R.id.noteName);
         noteDate = findViewById(R.id.noteDate);
         saveEdition = findViewById(R.id.saveEditionButton);
+        myDB = new DataBaseHelper(AddNote.this);
+        currentUser = new User();
+        currentUserData = new ArrayList<String>();
+
+        Bundle bundle = getIntent().getExtras();
+        login = bundle.getString("Login");
+
+        // wpiasanie danych do currentUser
+        currentUserData.addAll(myDB.current_user_data(login));
+        currentUser.current_user(currentUser, currentUserData);
 
         noteDate.setText("Data: " + CalendarOperations.dateFormatter(CalendarOperations.selectedDate));
 
@@ -30,11 +47,10 @@ public class AddNote extends AppCompatActivity {
             public void onClick(View v) {
                 String newNoteName = noteName.getText().toString();
                 if (newNoteName.length() > 2) {
-                    Note newNote = new Note(newNoteName, CalendarOperations.selectedDate);
+                    Note newNote = new Note(newNoteName, CalendarOperations.selectedDate, currentUser);
                     Note.notesList.add(newNote);
                     finish();
                 } else {
-                    // nie wyswietla sie
                     Toast.makeText(AddNote.this, "Notatka jest za krótka!", Toast.LENGTH_SHORT).show();
                 }
             }

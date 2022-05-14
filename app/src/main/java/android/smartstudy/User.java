@@ -69,7 +69,7 @@ public class User {
         return password;
     }
 
-    User current_user (User currentUser, List<String> data){
+    public User current_user (User currentUser, List<String> data){
         int x = Integer.parseInt(data.get(0));
         currentUser.setId(x);
         currentUser.setName(data.get(1));
@@ -78,5 +78,15 @@ public class User {
         currentUser.setLogin(data.get(4));
         currentUser.setPassword(data.get(5));
         return currentUser;
+    }
+
+    public User get_current_user (User user, User data) {
+        user.setId(data.getId());
+        user.setName(data.getName());
+        user.setSurname(data.getSurname());
+        user.setUniversity(data.getUniversity());
+        user.setLogin(data.getLogin());
+        user.setPassword(data.getPassword());
+        return user;
     }
 }

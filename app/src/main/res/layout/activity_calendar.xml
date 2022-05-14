@@ -144,11 +144,11 @@
         android:layout_weight="5" />
 
     <Button
+        android:id="@+id/addNoteButton"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_gravity="center"
         android:background="#98C2E4"
-        android:onClick="newNote"
         android:text="Dodaj nową notatkę"
         android:textAllCaps="false"
         android:textColor="@color/black" />

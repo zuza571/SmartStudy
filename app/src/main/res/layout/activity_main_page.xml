@@ -13,7 +13,6 @@
         android:layout_height="300dp"
         android:layout_marginBottom="4dp"
         android:background="@drawable/calendar"
-        android:onClick="calendar"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

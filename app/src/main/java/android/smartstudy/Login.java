@@ -15,8 +15,7 @@ public class Login extends AppCompatActivity {
    EditText login_input, password_input;
    Button loginButton, backButton;
    DataBaseHelper myDB;
-   User currentUser;
-   List<String> currentUserData = new ArrayList<String>();
+   String login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,17 +26,15 @@ public class Login extends AppCompatActivity {
         password_input = findViewById(R.id.password);
         loginButton = findViewById(R.id.loginButton);
         backButton = findViewById(R.id.backButton);
+
         myDB = new DataBaseHelper(Login.this);
-        currentUser = new User();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // logowanie przez sprawdzenie bazy danych
                 if (myDB.login_user(login_input.getText().toString(), password_input.getText().toString())) {
-                    // wpiasanie danych do currentUser
-                    currentUserData.addAll(myDB.current_user_data(login_input.getText().toString()));
-                    currentUser.current_user(currentUser, currentUserData);
+                    login = login_input.getText().toString();
                     openMainPage();
                 } else {
                     Toast.makeText(Login.this, "Spróbuj jeszcze raz!", Toast.LENGTH_SHORT).show();
@@ -55,6 +52,9 @@ public class Login extends AppCompatActivity {
 
     public void openMainPage() {
         Intent intent = new Intent(this, MainPage.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("Login", login_input.getText().toString());
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

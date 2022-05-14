@@ -7,6 +7,7 @@ public class Note {
     public static ArrayList<Note> notesList = new ArrayList<>();
     private String name;
     private LocalDate date;
+    private User ownerNote;
     public static Note selectedNote;
 
     // przypisanie do daty
@@ -19,9 +20,10 @@ public class Note {
         return notes;
     }
 
-    public Note(String name, LocalDate date) {
+    public Note(String name, LocalDate date, User ownerNote) {
         this.name = name;
         this.date = date;
+        this.ownerNote = ownerNote;
     }
 
     public String getName() {
@@ -32,11 +34,19 @@ public class Note {
         return date;
     }
 
+    public User getOwnerNote() {
+        return ownerNote;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public void setOwnerNote(User ownerNote) {
+        this.ownerNote = ownerNote;
     }
 }

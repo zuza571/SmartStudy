@@ -25,7 +25,8 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
     private TextView currentMonth, previousMonth, nextMonth;
     private RecyclerView recyclerView; // okno z wszystkimi dniami
     private ListView notesList;
-    private Button goToCurrentMonth, deleteNote;
+    private Button goToCurrentMonth, deleteNote, addNote;
+    private String login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,11 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         nextMonth = findViewById(R.id.nextMonthButton);
         goToCurrentMonth = findViewById(R.id.goToCurrentMonth);
         deleteNote = findViewById(R.id.deleteNote);
+        addNote = findViewById(R.id.addNoteButton);
         notesList = findViewById(R.id.notesList);
+
+        Bundle bundle = getIntent().getExtras();
+        login = bundle.getString("Login");
 
         CalendarOperations.selectedDate = LocalDate.now();
         setMonthView();
@@ -63,6 +68,13 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
          */
 
         //------------------------------------------------------------------------------------------
+
+        addNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAddNote();
+            }
+        });
 
         goToCurrentMonth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,8 +159,12 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         notesList.setAdapter(noteAdapter);
     }
 
-    public void newNote(View view) {
-        startActivity(new Intent(this, AddNote.class));
+    public void openAddNote() {
+        Intent intent = new Intent(this, AddNote.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("Login", login);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     // wybrana notatka

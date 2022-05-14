@@ -14,7 +14,7 @@ import java.util.List;
 public class DataBaseHelper extends SQLiteOpenHelper {
 
     private Context context;
-    // tabela 1
+    // tabela 1 - User
     private final static String DATABASE_NAME = "SmartStudyDataBase.db";
 
     private final static String TABLE_NAME = "Users";
@@ -99,20 +99,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         List<String> currentUserData = new ArrayList<String>();
 
-        int i = 0;
-        while(i < 6){
-           switch(i) {
-               case 0:
-               case 1:
-               case 2:
-               case 3:
-               case 4:
-               case 5:
-                   currentUserData.add(cursorUser.getString(i));
-                   break;
-               default: break;
-           }
-           i++;
+        for(int i = 0; i < 6; i++) {
+            currentUserData.add(cursorUser.getString(i));
         }
         return currentUserData;
     }
