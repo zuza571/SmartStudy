@@ -4,19 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#D3F6FF"
     tools:context=".MainPage">
 
     <Button
         android:id="@+id/calendarButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="188dp"
-        android:layout_marginTop="460dp"
-        android:background="@color/black"
-        android:text="Kalendarz"
+        android:layout_width="406dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/calendar"
+        android:onClick="calendar"
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/timetableButton"
+        android:layout_width="406dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="304dp"
+        android:background="@drawable/timetable"
+        android:onClick="timetable"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="640dp"
+        android:fontFamily="@font/chakra_petch_light"
+        android:lineSpacingExtra="10sp"
+        android:layout_marginLeft="10dp"
+        android:text="Następne zajęcia: "
+        android:textAllCaps="false"
+        android:textColor="#003549"
+        android:textSize="25dp"
+        android:textStyle="italic"
+        android:typeface="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.009"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

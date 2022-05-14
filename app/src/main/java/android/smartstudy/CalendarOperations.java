@@ -15,9 +15,14 @@ public class CalendarOperations {
     }
 
     // formatowanie daty na miesiac i rok - do widoku
-    public static String monthYearFromDate(LocalDate date)
+    public static String monthYearFormatter(LocalDate date)
     {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
+        return date.format(formatter);
+    }
+
+    public static String dayFormatter(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E");
         return date.format(formatter);
     }
 
@@ -29,7 +34,7 @@ public class CalendarOperations {
         // ile dni w miesiacu
         int daysOfMonth = yearMonth.lengthOfMonth();
 
-        firstOfMonth = CalendarOperations.selectedDate.withDayOfMonth(1);
+        firstOfMonth = CalendarOperations.selectedDate.withDayOfMonth(1).minusDays(1); // cos sie przestawilo o 1 dzien, wiec minusDays
         int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
 
         for (int i=1; i<=42; i++) {

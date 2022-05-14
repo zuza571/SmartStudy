@@ -7,24 +7,17 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainPage extends AppCompatActivity {
-    Button calendarButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
-
-        calendarButton = findViewById(R.id.calendarButton);
-
-        calendarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openCalendar();
-            }
-        });
     }
-    public void openCalendar() {
-        Intent intent = new Intent(this, CalendarMain.class);
-        startActivity(intent);
+
+    public void timetable (View view) {
+        startActivity(new Intent(this, Timetable.class));
+    }
+
+    public void calendar (View view) {
+        startActivity(new Intent(this, CalendarMain.class));
     }
 }

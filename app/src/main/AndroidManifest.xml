@@ -13,7 +13,7 @@
             android:name=".AddNote"
             android:exported="false" />
         <activity
-            android:name=".Schedule"
+            android:name=".Timetable"
             android:exported="false" />
         <activity
             android:name=".CalendarMain"

@@ -1,6 +1,6 @@
 package android.smartstudy;
 
-import static android.smartstudy.CalendarOperations.monthYearFromDate;
+import static android.smartstudy.CalendarOperations.monthYearFormatter;
 import static android.smartstudy.CalendarOperations.daysOfMonthMethod;
 
 import android.content.Intent;
@@ -44,7 +44,6 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         // wybrana notatka do usuniecia
         ArrayAdapter<Note> adapter = new ArrayAdapter<Note>(CalendarMain.this, android.R.layout.simple_list_item_1, Note.notes);
         notesList.setAdapter(adapter);
-
         notesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -71,9 +70,9 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
     }
 
     private void setMonthView() {
-        currentMonth.setText(monthYearFromDate(CalendarOperations.selectedDate));
-        previousMonth.setText(monthYearFromDate(CalendarOperations.selectedDate.minusMonths(1)));
-        nextMonth.setText(monthYearFromDate(CalendarOperations.selectedDate.plusMonths(1)));
+        currentMonth.setText(monthYearFormatter(CalendarOperations.selectedDate));
+        previousMonth.setText(monthYearFormatter(CalendarOperations.selectedDate.minusMonths(1)));
+        nextMonth.setText(monthYearFormatter(CalendarOperations.selectedDate.plusMonths(1)));
 
         ArrayList<LocalDate> daysOfMonth = daysOfMonthMethod(CalendarOperations.selectedDate);
 
