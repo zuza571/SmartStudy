@@ -46,6 +46,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
             else if(date.equals(LocalDate.now()))
                 calendarViewHolder.parentView.setBackgroundColor(Color.parseColor("#A0A0A0"));
             // jesli jest notatka - inny kolor
+            // calendarViewHolder.parentView.setBackgroundColor(Color.parseColor("#98C2E4"));
 
         }
     }

@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
-import java.time.LocalDate;
 import java.util.List;
 
 public class NoteAdapter extends ArrayAdapter<Note> {
@@ -31,9 +29,5 @@ public class NoteAdapter extends ArrayAdapter<Note> {
         String noteContent = note.getName();
         noteCell.setText(noteContent);
         return convertView;
-    }
-
-    public interface OnItemListener {
-        void onItemClick(int position, Note note);
     }
 }

@@ -3,7 +3,6 @@ package android.smartstudy;
 import static android.smartstudy.CalendarOperations.monthYearFormatter;
 import static android.smartstudy.CalendarOperations.daysOfMonthMethod;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,12 +20,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CalendarMain extends AppCompatActivity implements CalendarAdapter.OnItemListener, NoteAdapter.OnItemListener {
+public class CalendarMain extends AppCompatActivity implements CalendarAdapter.OnItemListener {
     private TextView currentMonth, previousMonth, nextMonth;
     private RecyclerView recyclerView; // okno z wszystkimi dniami
-    private ListView notesList;
+    private ListView lvNotesList;
     private Button goToCurrentMonth, deleteNote, addNote;
     private String login;
+    DataBaseHelper myDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         goToCurrentMonth = findViewById(R.id.goToCurrentMonth);
         deleteNote = findViewById(R.id.deleteNote);
         addNote = findViewById(R.id.addNoteButton);
-        notesList = findViewById(R.id.notesList);
+        lvNotesList = findViewById(R.id.lvNotesList);
 
         Bundle bundle = getIntent().getExtras();
         login = bundle.getString("Login");
@@ -52,20 +52,27 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         // nie dziala
 
 
+        // zmiana notatek na String
+        String [] notesToString = fillListView();
+
         /*
-        String notesListToString = notesList.toString();
+        List<String> notesListToString = new ArrayList<>();
+        for(int i = 0; i < Note.notesList.size(); i++) {
+            notesListToString.add(Note.notesList.get(i).getName());
+            System.out.println(notesListToString);
+        }
+         */
+        List<String> notes = new ArrayList<>();
+        notes.add("a");
+        notes.add("b");
 
         // wybrana notatka do usuniecia
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, notesListToString);
-        notesList.setAdapter(adapter);
-        notesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lvNotesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast.makeText(CalendarMain.this, Note.selectedNote.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(CalendarMain.this, notes.get(position), Toast.LENGTH_SHORT).show();
             }
         });
-
-         */
 
         //------------------------------------------------------------------------------------------
 
@@ -156,7 +163,27 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
     private void setNoteAdapter() {
         ArrayList<Note> dayilyNotes = Note.notesForDate(CalendarOperations.selectedDate);
         NoteAdapter noteAdapter = new NoteAdapter(getApplicationContext(), dayilyNotes);
-        notesList.setAdapter(noteAdapter);
+        lvNotesList.setAdapter(noteAdapter);
+    }
+
+    private String[] fillListView() {
+
+        // wczytanie z bazy danych
+        //List<Note> notesList = dbHelper.getAllNotes();
+
+        // zmiana na String
+        String [] notesToString = new String[Note.notesList.size()];
+        int i = 0;
+        for (Note note : Note.notesList) {
+            notesToString[i] = note.toString();
+            i += 1;
+        }
+
+        // wypelnienie listView
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, notesToString);
+        lvNotesList.setAdapter(adapter);
+
+        return notesToString;
     }
 
     public void openAddNote() {
@@ -165,17 +192,5 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         bundle.putString("Login", login);
         intent.putExtras(bundle);
         startActivity(intent);
-    }
-
-    // wybrana notatka
-    @Override
-    public void onItemClick(int position, Note note) {
-        System.out.println("click");
-        if (note != null) {
-            Note.selectedNote = note;
-            System.out.println("toast");
-            Toast.makeText(CalendarMain.this, note.toString(), Toast.LENGTH_LONG).show();
-            setMonthView();
-        }
     }
 }
