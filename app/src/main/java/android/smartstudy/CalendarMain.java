@@ -26,6 +26,8 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
     private ListView lvNotesList;
     private Button goToCurrentMonth, deleteNote, addNote;
     private String login;
+    private List<String> currentUserData;
+    private User currentUser;
     DataBaseHelper myDB;
 
     @Override
@@ -42,8 +44,15 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         addNote = findViewById(R.id.addNoteButton);
         lvNotesList = findViewById(R.id.lvNotesList);
 
+        myDB = new DataBaseHelper(CalendarMain.this);
+        currentUser = new User();
+        currentUserData = new ArrayList<>();
+
+        // wczytanie currentUser
         Bundle bundle = getIntent().getExtras();
         login = bundle.getString("Login");
+        currentUserData.addAll(myDB.current_user_data(login));
+        currentUser.current_user(currentUser, currentUserData);
 
         CalendarOperations.selectedDate = LocalDate.now();
         setMonthView();
@@ -53,8 +62,9 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
 
 
         // zmiana notatek na String
-        String [] notesToString = fillListView();
-
+        if(!Note.notesList.isEmpty()) {
+            String[] notesToString = fillListView();
+        }
         /*
         List<String> notesListToString = new ArrayList<>();
         for(int i = 0; i < Note.notesList.size(); i++) {
@@ -169,7 +179,8 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
     private String[] fillListView() {
 
         // wczytanie z bazy danych
-        //List<Note> notesList = dbHelper.getAllNotes();
+        List<Note> notesList = myDB.getAllNotes(currentUser);
+
 
         // zmiana na String
         String [] notesToString = new String[Note.notesList.size()];

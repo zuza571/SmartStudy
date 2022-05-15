@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Note {
     public static ArrayList<Note> notesList = new ArrayList<>();
+    private int id;
     private String name;
     private LocalDate date;
     private User noteOwner;

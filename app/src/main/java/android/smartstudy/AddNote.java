@@ -16,10 +16,10 @@ public class AddNote extends AppCompatActivity {
     private EditText noteName;
     private TextView noteDate;
     private Button saveEdition;
-    User currentUser;
-    String login;
-    List<String> currentUserData;
-    DataBaseHelper myDB;
+    private User currentUser;
+    private String login;
+    private List<String> currentUserData;
+    private DataBaseHelper myDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,8 @@ public class AddNote extends AppCompatActivity {
                 String newNoteName = noteName.getText().toString();
                 if (newNoteName.length() > 2) {
                     Note newNote = new Note(newNoteName, CalendarOperations.selectedDate, currentUser);
-                    Note.notesList.add(newNote);
+                    // Note.notesList.add(newNote);
+                    myDB.addNote(newNote);
                     finish();
                 } else {
                     Toast.makeText(AddNote.this, "Notatka jest za krótka!", Toast.LENGTH_SHORT).show();
