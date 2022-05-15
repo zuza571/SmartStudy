@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 
 import android.widget.Toast;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
