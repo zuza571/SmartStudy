@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -59,26 +58,17 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
 
         CalendarOperations.selectedDate = LocalDate.now();
 
-        //------------------------------------------------------------------------------------------
-        // zmiana notatek na String i wypelnienie listView
-        String[] notesToString = fillListView();
-
-        NoteAdapter adapter = new NoteAdapter(this, notesToString);
-        lvNotesList.setAdapter(adapter);
-
         setMonthView();
 
-        // wybrana notatka do usuniecia
+        // wybrana notatka (do usuniecia)
         lvNotesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast.makeText(CalendarMain.this, notesToString[position], Toast.LENGTH_SHORT).show();
-                String selectedNote = notesToString[position];
-                System.out.println(selectedNote);
+                Note.selectedNote = String.valueOf(adapterView.getItemAtPosition(position));
+                System.out.println(position + Note.selectedNote);
+                setMonthView();
             }
         });
-
-        //------------------------------------------------------------------------------------------
 
         addNote.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +85,8 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
             }
         });
 
+        //-------------------------------------------------------
+        // dorobic
         deleteNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,11 +102,7 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
 
         ArrayList<LocalDate> daysOfMonth = daysOfMonthMethod(CalendarOperations.selectedDate);
 
-
-        String[] notesToString = fillListView();
-
-        NoteAdapter adapter = new NoteAdapter(this, notesToString);
-        lvNotesList.setAdapter(adapter);
+        fillListView();
 
         CalendarAdapter calendarAdapter = new CalendarAdapter(daysOfMonth, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
@@ -130,9 +118,10 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
             goToCurrentMonth.setVisibility(View.VISIBLE);
         }
 
-
         // usun notatke
-        if (notesList.isEmpty()) {
+        //-----------------------------------
+        // ma byc niewidoczny jak nie wybrano zadnej notatki
+        if (Note.selectedNote.equals(null)) {
             deleteNote.setVisibility(View.INVISIBLE);
         } else {
             deleteNote.setVisibility(View.VISIBLE);
@@ -167,7 +156,8 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         fillListView();
     }
 
-    private String[] fillListView() {
+    // zmiana notatek na String i wypelnienie listView
+    private void fillListView() {
         // wczytanie z bazy danych
         List<Note> dailyNotes = new ArrayList<>();
 
@@ -185,7 +175,9 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
             i += 1;
         }
 
-        return notesToString;
+        // ustawienie adaptera
+        NoteAdapter adapter = new NoteAdapter(this, notesToString);
+        lvNotesList.setAdapter(adapter);
     }
 
     public void openAddNote() {

@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
     private final ArrayList<LocalDate> days;
@@ -38,9 +37,9 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
         final LocalDate date = days.get(position);
 
         if(date == null)
-            calendarViewHolder.daysOfMonth.setText("");
+            calendarViewHolder.dayOfMonth.setText("");
         else {
-            calendarViewHolder.daysOfMonth.setText(String.valueOf(date.getDayOfMonth()));
+            calendarViewHolder.dayOfMonth.setText(String.valueOf(date.getDayOfMonth()));
             if(date.equals(CalendarOperations.selectedDate))
                 calendarViewHolder.parentView.setBackgroundColor(Color.parseColor("#CCE5FF"));
             // aktualna data

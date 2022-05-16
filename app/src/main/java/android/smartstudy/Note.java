@@ -7,9 +7,10 @@ public class Note {
     private String text;
     private LocalDate date;
     private User noteOwner;
+    public static String selectedNote;
 
-    public Note(String name, LocalDate date, User noteOwner) {
-        this.text = name;
+    public Note(String text, LocalDate date, User noteOwner) {
+        this.text = text;
         this.date = date;
         this.noteOwner = noteOwner;
     }
