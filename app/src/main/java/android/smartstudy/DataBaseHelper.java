@@ -129,7 +129,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     List<String> current_user_data(String login) {
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + TABLE_COLUMN_LOGIN + " = " + "login";
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + TABLE_COLUMN_LOGIN + " = " + "\"" + login + "\"";
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursorUser = db.rawQuery(query, null);
@@ -145,10 +145,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     List<Note> getAllNotes(User currentUser) {
         String userLogin = currentUser.getLogin();
-        String query = "SELECT * FROM " + TABLE_NAME_NOTE + " WHERE " + TABLE_COLUMN_USER_LOGIN_NOTE + " = " + "userLogin";
+        System.out.println(userLogin);
+        String queryNote = "SELECT * FROM " + TABLE_NAME_NOTE + " WHERE " + TABLE_COLUMN_USER_LOGIN_NOTE + " = " + "\"" + userLogin + "\"";
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursorNote = db.rawQuery(query, null);
+        Cursor cursorNote = db.rawQuery(queryNote, null);
         cursorNote.moveToFirst();
 
         List<Note> notes = new ArrayList<>();
