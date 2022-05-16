@@ -1,24 +1,21 @@
 package android.smartstudy;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Note {
-    public static ArrayList<Note> notesList = new ArrayList<>();
     private int id;
-    private String name;
+    private String text;
     private LocalDate date;
     private User noteOwner;
 
     public Note(String name, LocalDate date, User noteOwner) {
-        this.name = name;
+        this.text = name;
         this.date = date;
         this.noteOwner = noteOwner;
     }
 
-    public String getName() {
-        return name;
+    public String getText() {
+        return text;
     }
 
     public LocalDate getDate() {
@@ -29,8 +26,8 @@ public class Note {
         return noteOwner;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public void setDate(LocalDate date) {
@@ -43,6 +40,6 @@ public class Note {
 
     @Override
     public String toString() {
-        return name;
+        return text;
     }
 }

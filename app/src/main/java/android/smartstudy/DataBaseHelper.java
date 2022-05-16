@@ -95,7 +95,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         String date = CalendarOperations.dateFormatter(note.getDate());
 
-        cv.put(TABLE_COLUMN_TEXT_NOTE, note.getName());
+        cv.put(TABLE_COLUMN_TEXT_NOTE, note.getText());
         cv.put(TABLE_COLUMN_DATE_NOTE, date);
         cv.put(TABLE_COLUMN_USER_LOGIN_NOTE, note.getNoteOwner().getLogin());
 
