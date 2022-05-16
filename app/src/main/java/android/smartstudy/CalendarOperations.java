@@ -28,24 +28,25 @@ public class CalendarOperations {
     }
 
     // podzial miesiaca na poszczegolne dni
-    public static ArrayList<LocalDate> daysOfMonthMethod(LocalDate date) {
-        ArrayList<LocalDate> daysOfMonthArray = new ArrayList<>();
+    public static ArrayList<LocalDate> fillCalendar(LocalDate date) {
+        ArrayList<LocalDate> daysOfMonth = new ArrayList<>();
         YearMonth yearMonth = YearMonth.from(date);
 
         // ile dni w miesiacu
-        int daysOfMonth = yearMonth.lengthOfMonth();
+        int monthLength = yearMonth.lengthOfMonth();
 
-        firstOfMonth = CalendarOperations.selectedDate.withDayOfMonth(1).minusDays(1); // cos sie przestawilo o 1 dzien, wiec minusDays
+        // cos sie przestawilo o 1 dzien, wiec minusDays
+        firstOfMonth = CalendarOperations.selectedDate.withDayOfMonth(1).minusDays(1);
         int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
 
         for (int i=1; i<=42; i++) {
-            if(i <= dayOfWeek || i > daysOfMonth + dayOfWeek)
-                daysOfMonthArray.add(null);
+            // dzien rozpoczecia i zakonczenia miesiaca we wlasciwym miejscu
+            if(i <= dayOfWeek || i > monthLength + dayOfWeek)
+                daysOfMonth.add(null);
             else
-                daysOfMonthArray.add(LocalDate.of(selectedDate.getYear(),
-                        selectedDate.getMonth(), i - dayOfWeek));
+                daysOfMonth.add(LocalDate.of(selectedDate.getYear(), selectedDate.getMonth(), i - dayOfWeek));
         }
-        return daysOfMonthArray;
+        return daysOfMonth;
     }
 
 }

@@ -1,7 +1,7 @@
 package android.smartstudy;
 
 import static android.smartstudy.CalendarOperations.monthYearFormatter;
-import static android.smartstudy.CalendarOperations.daysOfMonthMethod;
+import static android.smartstudy.CalendarOperations.fillCalendar;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -100,7 +100,7 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         previousMonth.setText(monthYearFormatter(CalendarOperations.selectedDate.minusMonths(1)));
         nextMonth.setText(monthYearFormatter(CalendarOperations.selectedDate.plusMonths(1)));
 
-        ArrayList<LocalDate> daysOfMonth = daysOfMonthMethod(CalendarOperations.selectedDate);
+        ArrayList<LocalDate> daysOfMonth = fillCalendar(CalendarOperations.selectedDate);
 
         fillListView();
 
