@@ -91,6 +91,9 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         deleteNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!Note.selectedNote.isEmpty()) {
+                    myDB.deleteNote(Note.selectedNote, notesList, currentUser);
+                }
                 setMonthView();
             }
         });

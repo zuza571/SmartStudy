@@ -164,4 +164,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
         return notes;
     }
+
+    List<Note> deleteNote(String text, List<Note> notes, User currentUser) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(TABLE_NAME_NOTE, "Text=?", new String[]{text});
+        if(result == -1){
+            Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
+            return notes;
+        }else{
+            Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
+            for(int i = 0; i < notes.size(); i++) {
+                notes.remove(i);
+            }
+            notes.addAll(getAllNotes(currentUser));
+            return notes;
+        }
+    }
 }
