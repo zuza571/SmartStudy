@@ -74,7 +74,7 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Toast.makeText(CalendarMain.this, notesToString[position], Toast.LENGTH_SHORT).show();
                 String selectedNote = notesToString[position];
-                System.out.println("selectedNote");
+                System.out.println(selectedNote);
             }
         });
 
