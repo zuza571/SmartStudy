@@ -122,11 +122,14 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         // usun notatke
         //-----------------------------------
         // ma byc niewidoczny jak nie wybrano zadnej notatki
+        /*
         if (Note.selectedNote.equals(null)) {
             deleteNote.setVisibility(View.INVISIBLE);
         } else {
             deleteNote.setVisibility(View.VISIBLE);
         }
+
+         */
     }
 
     // ----------------------------------------
