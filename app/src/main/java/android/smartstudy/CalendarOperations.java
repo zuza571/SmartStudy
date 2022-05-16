@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class CalendarOperations {
     public static LocalDate selectedDate, firstOfMonth;
 
+
     // formatowanie daty
     public static String dateFormatter(LocalDate date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");

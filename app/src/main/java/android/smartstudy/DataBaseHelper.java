@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.widget.Toast;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -143,8 +144,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     List<Note> getAllNotes(User currentUser) {
-        String login = currentUser.getLogin();
-        String query = "SELECT * FROM " + TABLE_NAME_NOTE + " WHERE " + TABLE_COLUMN_USER_LOGIN_NOTE + " = " + "login";
+        String userLogin = currentUser.getLogin();
+        String query = "SELECT * FROM " + TABLE_NAME_NOTE + " WHERE " + TABLE_COLUMN_USER_LOGIN_NOTE + " = " + "userLogin";
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursorNote = db.rawQuery(query, null);
@@ -152,9 +153,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         List<Note> notes = new ArrayList<>();
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
         while (!cursorNote.isAfterLast()) {
             String noteText = cursorNote.getString(1);
-            LocalDate noteDate = LocalDate.parse(cursorNote.getString(2));
+            LocalDate noteDate = LocalDate.parse(cursorNote.getString(2), formatter);
             Note note = new Note(noteText, noteDate, currentUser);
             notes.add(note);
             cursorNote.moveToNext();

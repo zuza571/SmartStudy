@@ -2,6 +2,7 @@ package android.smartstudy;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Note {
     public static ArrayList<Note> notesList = new ArrayList<>();
@@ -9,17 +10,6 @@ public class Note {
     private String name;
     private LocalDate date;
     private User noteOwner;
-    public static Note selectedNote;
-
-    // przypisanie do daty
-    public static ArrayList<Note> notesForDate(LocalDate date) {
-        ArrayList<Note> notes = new ArrayList<>();
-        for (Note note : notesList) {
-            if(note.getDate().equals(date))
-                notes.add(note);
-        }
-        return notes;
-    }
 
     public Note(String name, LocalDate date, User noteOwner) {
         this.name = name;
@@ -49,5 +39,10 @@ public class Note {
 
     public void setNoteOwner(User noteOwner) {
         this.noteOwner = noteOwner;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

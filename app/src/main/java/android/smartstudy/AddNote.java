@@ -15,7 +15,7 @@ import java.util.List;
 public class AddNote extends AppCompatActivity {
     private EditText noteName;
     private TextView noteDate;
-    private Button saveEdition;
+    private Button saveEdition, cancelEdition;
     private User currentUser;
     private String login;
     private List<String> currentUserData;
@@ -29,6 +29,7 @@ public class AddNote extends AppCompatActivity {
         noteName = findViewById(R.id.noteName);
         noteDate = findViewById(R.id.noteDate);
         saveEdition = findViewById(R.id.saveEditionButton);
+        cancelEdition = findViewById(R.id.cancelEditionButton);
         myDB = new DataBaseHelper(AddNote.this);
         currentUser = new User();
         currentUserData = new ArrayList<String>();
@@ -42,6 +43,13 @@ public class AddNote extends AppCompatActivity {
 
         noteDate.setText("Data: " + CalendarOperations.dateFormatter(CalendarOperations.selectedDate));
 
+        cancelEdition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activityCancelEdition();
+            }
+        });
+
         saveEdition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +58,8 @@ public class AddNote extends AppCompatActivity {
                     Note newNote = new Note(newNoteName, CalendarOperations.selectedDate, currentUser);
                     // Note.notesList.add(newNote);
                     myDB.addNote(newNote);
-                    finish();
+
+                    activitySaveEdition();
                 } else {
                     Toast.makeText(AddNote.this, "Notatka jest za krótka!", Toast.LENGTH_SHORT).show();
                 }
@@ -58,7 +67,19 @@ public class AddNote extends AppCompatActivity {
         });
     }
 
-    public void cancelEdition (View view) {
-        startActivity(new Intent(this, CalendarMain.class));
+    public void activityCancelEdition () {
+        Intent intent = new Intent(this, CalendarMain.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("Login", login);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void activitySaveEdition () {
+        Intent intent = new Intent(this, CalendarMain.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("Login", login);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

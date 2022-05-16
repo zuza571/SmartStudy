@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
     private final ArrayList<LocalDate> days;
@@ -45,9 +46,18 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
             // aktualna data
             else if(date.equals(LocalDate.now()))
                 calendarViewHolder.parentView.setBackgroundColor(Color.parseColor("#A0A0A0"));
-            // jesli jest notatka - inny kolor
-            // calendarViewHolder.parentView.setBackgroundColor(Color.parseColor("#98C2E4"));
-
+            // jesli jest notatka w danym dniu
+            else {
+                for (int i = 0; i < 42; i++) {
+                    for (int j = 0; j < CalendarMain.notesList.size(); j++) {
+                        LocalDate noteDate = CalendarMain.notesList.get(j).getDate();
+                        if (date.equals(noteDate)) {
+                            calendarViewHolder.parentView.setBackgroundColor(Color.parseColor("#FFCC99"));
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 

@@ -79,14 +79,4 @@ public class User {
         currentUser.setPassword(data.get(5));
         return currentUser;
     }
-
-    public User get_current_user (User user, User data) {
-        user.setId(data.getId());
-        user.setName(data.getName());
-        user.setSurname(data.getSurname());
-        user.setUniversity(data.getUniversity());
-        user.setLogin(data.getLogin());
-        user.setPassword(data.getPassword());
-        return user;
-    }
 }
