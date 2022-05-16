@@ -8,11 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.time.LocalDate;
-
 public class NoteAdapter extends ArrayAdapter<String> {
-
-    View parentView;
 
     public NoteAdapter(Context context, String[] notes) {
         super(context, android.R.layout.simple_list_item_1, notes);
