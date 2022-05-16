@@ -54,6 +54,7 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         currentUserData.addAll(myDB.current_user_data(login));
         currentUser.current_user(currentUser, currentUserData);
 
+        // wszystkie notatki z bazy danych
         notesList = myDB.getAllNotes(currentUser);
 
         CalendarOperations.selectedDate = LocalDate.now();
@@ -141,7 +142,7 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
     }
     // ----------------------------------------
 
-    // wybrana data
+    // wybrana data - przypisanie
     @Override
     public void onItemClick(int position, LocalDate date) {
         if (date != null) {
@@ -158,7 +159,6 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
 
     // zmiana notatek na String i wypelnienie listView
     private void fillListView() {
-        // wczytanie z bazy danych
         List<Note> dailyNotes = new ArrayList<>();
 
         for (int i = 0; i < notesList.size(); i++) {
