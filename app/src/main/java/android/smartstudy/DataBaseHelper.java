@@ -195,10 +195,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TABLE_NAME_NOTE, "Text=?", new String[]{text});
         if(result == -1){
-            Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Nie udało się usunąć notatki.", Toast.LENGTH_SHORT).show();
             return notes;
         }else{
-            Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Pomyślnie usunięto notatkę.", Toast.LENGTH_SHORT).show();
             for(int i = 0; i < notes.size(); i++) {
                 notes.remove(i);
             }

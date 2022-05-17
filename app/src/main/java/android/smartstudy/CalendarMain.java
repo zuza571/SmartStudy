@@ -129,7 +129,6 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         } else {
             deleteNote.setVisibility(View.VISIBLE);
         }
-
          */
     }
 
