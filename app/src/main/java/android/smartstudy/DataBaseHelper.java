@@ -20,13 +20,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     // tabela 1 - User
     private final static String DATABASE_NAME = "SmartStudyDataBase.db";
 
-    private final static String TABLE_NAME = "Users";
-    private final static String TABLE_COLUMN_ID = "Id";
-    private final static String TABLE_COLUMN_NAME = "Name";
-    private final static String TABLE_COLUMN_SURNAME = "Surname";
-    private final static String TABLE_COLUMN_UNIVERISTY = "Study";
-    private final static String TABLE_COLUMN_LOGIN = "Login";
-    private final static String TABLE_COLUMN_PASSWORD = "Password";
+    private final static String TABLE_NAME_USER = "Users";
+    private final static String TABLE_COLUMN_ID_USER = "Id";
+    private final static String TABLE_COLUMN_NAME_USER = "Name";
+    private final static String TABLE_COLUMN_SURNAME_USER = "Surname";
+    private final static String TABLE_COLUMN_UNIVERISTY_USER = "Study";
+    private final static String TABLE_COLUMN_LOGIN_USER = "Login";
+    private final static String TABLE_COLUMN_PASSWORD_USER = "Password";
 
     // tabela 2 - Note
     private final static String TABLE_NAME_NOTE = "Notes";
@@ -35,6 +35,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private final static String TABLE_COLUMN_DATE_NOTE = "LocalDate";
     private final static String TABLE_COLUMN_USER_LOGIN_NOTE = "UserLogin";
 
+    // tabela 3 - Lesson
+    private final static String TABLE_NAME_LESSON = "Lessons";
+    private final static String TABLE_COLUMN_ID_LESSON = "Id";
+    private final static String TABLE_COLUMN_START_LESSON = "StartTime";
+    private final static String TABLE_COLUMN_DAY_LESSON = "Day";
+    private final static String TABLE_COLUMN_TEXT_LESSON = "Text";
+    private final static String TABLE_COLUMN_DURATION_LESSON = "Duration";
+    private final static String TABLE_COLUMN_USER_LOGIN_LESSON = "UserLogin";
+
     public DataBaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
         this.context = context;
@@ -42,13 +51,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String queryUser = "CREATE TABLE " + TABLE_NAME +
-                        " (" + TABLE_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        TABLE_COLUMN_NAME + " TEXT, " +
-                        TABLE_COLUMN_SURNAME + " TEXT, " +
-                        TABLE_COLUMN_UNIVERISTY + " TEXT, " +
-                        TABLE_COLUMN_LOGIN + " TEXT, " +
-                        TABLE_COLUMN_PASSWORD + " TEXT);";
+        String queryUser = "CREATE TABLE " + TABLE_NAME_USER +
+                            " (" + TABLE_COLUMN_ID_USER + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            TABLE_COLUMN_NAME_USER + " TEXT, " +
+                            TABLE_COLUMN_SURNAME_USER + " TEXT, " +
+                            TABLE_COLUMN_UNIVERISTY_USER + " TEXT, " +
+                            TABLE_COLUMN_LOGIN_USER + " TEXT, " +
+                            TABLE_COLUMN_PASSWORD_USER + " TEXT);";
         db.execSQL(queryUser);
 
         String queryNote = "CREATE TABLE " + TABLE_NAME_NOTE +
@@ -56,17 +65,29 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                             TABLE_COLUMN_TEXT_NOTE + " TEXT, " +
                             TABLE_COLUMN_DATE_NOTE + " TEXT, " +
                             TABLE_COLUMN_USER_LOGIN_NOTE + " TEXT, " +
-                            " FOREIGN KEY " + "(" + TABLE_COLUMN_USER_LOGIN_NOTE + ")" + " REFERENCES " + TABLE_NAME + "(" + TABLE_COLUMN_LOGIN + ")" + ");";
+                            " FOREIGN KEY " + "(" + TABLE_COLUMN_USER_LOGIN_NOTE + ")" + " REFERENCES " + TABLE_NAME_USER + "(" + TABLE_COLUMN_LOGIN_USER + ")" + ");";
         db.execSQL(queryNote);
+
+        String queryLesson = "CREATE TABLE " + TABLE_NAME_LESSON +
+                              " (" + TABLE_COLUMN_ID_LESSON + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                              TABLE_COLUMN_START_LESSON + " TEXT, " +
+                              TABLE_COLUMN_DAY_LESSON + " TEXT, " +
+                              TABLE_COLUMN_TEXT_LESSON + " TEXT, " +
+                              TABLE_COLUMN_DURATION_LESSON + " TEXT, " +
+                              TABLE_COLUMN_USER_LOGIN_LESSON + " TEXT, " +
+                              " FOREIGN KEY " + "(" + TABLE_COLUMN_USER_LOGIN_LESSON + ")" + " REFERENCES " + TABLE_NAME_USER + "(" + TABLE_COLUMN_LOGIN_USER + ")" + ");";
+        db.execSQL(queryLesson);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
 
         // stworzy nową tabelę USERS
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_USER);
         // stworzy nową tabelę NOTES
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_NOTE);
+        // stworzy nową tabelę LESSON
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_LESSON);
         // tworzenie nowej tabeli
         onCreate(db);
     }
@@ -75,13 +96,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(TABLE_COLUMN_NAME, user.getName());
-        cv.put(TABLE_COLUMN_SURNAME, user.getSurname());
-        cv.put(TABLE_COLUMN_UNIVERISTY, user.getUniversity());
-        cv.put(TABLE_COLUMN_LOGIN, user.getLogin());
-        cv.put(TABLE_COLUMN_PASSWORD, user.getPassword());
+        cv.put(TABLE_COLUMN_NAME_USER, user.getName());
+        cv.put(TABLE_COLUMN_SURNAME_USER, user.getSurname());
+        cv.put(TABLE_COLUMN_UNIVERISTY_USER, user.getUniversity());
+        cv.put(TABLE_COLUMN_LOGIN_USER, user.getLogin());
+        cv.put(TABLE_COLUMN_PASSWORD_USER, user.getPassword());
 
-        long result = db.insert(TABLE_NAME, null, cv);
+        long result = db.insert(TABLE_NAME_USER, null, cv);
         if(result == -1) {
             Toast.makeText(context, "Bład wprowadzenia danych do bazy danych.", Toast.LENGTH_SHORT).show();
         } else {
@@ -107,9 +128,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    void addLesson(Lesson lesson) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+    }
+
     boolean login_user(String login, String password) {
-        String queryLogin = "SELECT " + TABLE_COLUMN_LOGIN +  " FROM " + TABLE_NAME;
-        String queryPassword = "SELECT " + TABLE_COLUMN_PASSWORD + " FROM " + TABLE_NAME;
+        String queryLogin = "SELECT " + TABLE_COLUMN_LOGIN_USER +  " FROM " + TABLE_NAME_USER;
+        String queryPassword = "SELECT " + TABLE_COLUMN_PASSWORD_USER + " FROM " + TABLE_NAME_USER;
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursorLogin = db.rawQuery(queryLogin, null);
@@ -129,7 +155,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     List<String> current_user_data(String login) {
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + TABLE_COLUMN_LOGIN + " = " + "\"" + login + "\"";
+        String query = "SELECT * FROM " + TABLE_NAME_USER + " WHERE " + TABLE_COLUMN_LOGIN_USER + " = " + "\"" + login + "\"";
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursorUser = db.rawQuery(query, null);

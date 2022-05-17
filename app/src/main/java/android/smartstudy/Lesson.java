@@ -9,13 +9,15 @@ public class Lesson {
     private LocalDate dayOfWeek;
     private String text;
     private int duration;
+    private User lessonOwner;
 
-    public Lesson(int id, LocalTime startTime, LocalDate dayOfWeek, String text, int duration) {
+    public Lesson(int id, LocalTime startTime, LocalDate dayOfWeek, String text, int duration, User lessonOwner) {
         this.id = id;
         this.startTime = startTime;
         this.dayOfWeek = dayOfWeek;
         this.text = text;
         this.duration = duration;
+        this.lessonOwner = lessonOwner;
     }
 
     public int getId() {
@@ -38,6 +40,10 @@ public class Lesson {
         return duration;
     }
 
+    public User getLessonOwner() {
+        return lessonOwner;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -56,5 +62,9 @@ public class Lesson {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public void setLessonOwner(User lessonOwner) {
+        this.lessonOwner = lessonOwner;
     }
 }
