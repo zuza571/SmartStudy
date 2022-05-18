@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.widget.Toast;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +74,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                               TABLE_COLUMN_START_LESSON + " TEXT, " +
                               TABLE_COLUMN_DAY_LESSON + " TEXT, " +
                               TABLE_COLUMN_TEXT_LESSON + " TEXT, " +
-                              TABLE_COLUMN_DURATION_LESSON + " TEXT, " +
+                              TABLE_COLUMN_DURATION_LESSON + " INTEGER, " +
                               TABLE_COLUMN_USER_LOGIN_LESSON + " TEXT, " +
                               " FOREIGN KEY " + "(" + TABLE_COLUMN_USER_LOGIN_LESSON + ")" + " REFERENCES " + TABLE_NAME_USER + "(" + TABLE_COLUMN_LOGIN_USER + ")" + ");";
         db.execSQL(queryLesson);
@@ -131,6 +132,23 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     void addLesson(Lesson lesson) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+
+        String startTime = lesson.getStartTime().toString();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+        String dayOfWeek = lesson.getDayOfWeek().format(formatter);
+
+        cv.put(TABLE_COLUMN_START_LESSON, startTime);
+        cv.put(TABLE_COLUMN_DAY_LESSON, dayOfWeek);
+        cv.put(TABLE_COLUMN_TEXT_LESSON, lesson.getText());
+        cv.put(TABLE_COLUMN_DURATION_LESSON, lesson.getDuration());
+        cv.put(TABLE_COLUMN_USER_LOGIN_LESSON, lesson.getLessonOwner().getLogin());
+
+        long result = db.insert(TABLE_NAME_LESSON, null, cv);
+        if(result == -1) {
+            Toast.makeText(context, "Bład wprowadzenia danych do bazy danych.", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Dodano Lekcję!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     boolean login_user(String login, String password) {
