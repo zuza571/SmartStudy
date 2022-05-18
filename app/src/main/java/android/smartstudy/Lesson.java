@@ -7,14 +7,16 @@ public class Lesson {
     private int id;
     private LocalTime startTime;
     private LocalDate dayOfWeek;
+    private String room;
     private String text;
     private int duration;
     private User lessonOwner;
 
-    public Lesson(int id, LocalTime startTime, LocalDate dayOfWeek, String text, int duration, User lessonOwner) {
+    public Lesson(int id, LocalTime startTime, LocalDate dayOfWeek, String room, String text, int duration, User lessonOwner) {
         this.id = id;
         this.startTime = startTime;
         this.dayOfWeek = dayOfWeek;
+        this.room = room;
         this.text = text;
         this.duration = duration;
         this.lessonOwner = lessonOwner;
@@ -30,6 +32,10 @@ public class Lesson {
 
     public LocalDate getDayOfWeek() {
         return dayOfWeek;
+    }
+
+    public String getRoom() {
+        return room;
     }
 
     public String getText() {
@@ -54,6 +60,10 @@ public class Lesson {
 
     public void setDayOfWeek(LocalDate dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
     }
 
     public void setText(String text) {

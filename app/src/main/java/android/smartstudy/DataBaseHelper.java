@@ -41,6 +41,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private final static String TABLE_COLUMN_ID_LESSON = "Id";
     private final static String TABLE_COLUMN_START_LESSON = "StartTime";
     private final static String TABLE_COLUMN_DAY_LESSON = "Day";
+    private final static String TABLE_COLUMN_ROOM_LESSON = "Room";
     private final static String TABLE_COLUMN_TEXT_LESSON = "Text";
     private final static String TABLE_COLUMN_DURATION_LESSON = "Duration";
     private final static String TABLE_COLUMN_USER_LOGIN_LESSON = "UserLogin";
@@ -73,6 +74,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                               " (" + TABLE_COLUMN_ID_LESSON + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                               TABLE_COLUMN_START_LESSON + " TEXT, " +
                               TABLE_COLUMN_DAY_LESSON + " TEXT, " +
+                              TABLE_COLUMN_ROOM_LESSON + " TEXT, " +
                               TABLE_COLUMN_TEXT_LESSON + " TEXT, " +
                               TABLE_COLUMN_DURATION_LESSON + " INTEGER, " +
                               TABLE_COLUMN_USER_LOGIN_LESSON + " TEXT, " +
@@ -139,6 +141,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         cv.put(TABLE_COLUMN_START_LESSON, startTime);
         cv.put(TABLE_COLUMN_DAY_LESSON, dayOfWeek);
+        cv.put(TABLE_COLUMN_ROOM_LESSON, lesson.getRoom());
         cv.put(TABLE_COLUMN_TEXT_LESSON, lesson.getText());
         cv.put(TABLE_COLUMN_DURATION_LESSON, lesson.getDuration());
         cv.put(TABLE_COLUMN_USER_LOGIN_LESSON, lesson.getLessonOwner().getLogin());
