@@ -25,7 +25,6 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
     private Button goToCurrentMonth, deleteNote, addNote;
     private String login;
     private List<String> currentUserData;
-
     private static User currentUser;
     static DataBaseHelper myDB;
     static List<Note> notesList;
@@ -66,6 +65,8 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Note.selectedNote = String.valueOf(adapterView.getItemAtPosition(position));
+                // odznaczenie notatki, gdy jest wybrana
+                // nie dziala
                 System.out.println(position + Note.selectedNote);
                 setMonthView();
             }
@@ -91,8 +92,10 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         deleteNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myDB.deleteNote(Note.selectedNote, notesList, currentUser);
-                setMonthView();
+                if (Note.selectedNote != "") {
+                    myDB.deleteNote(Note.selectedNote, notesList, currentUser);
+                    setMonthView();
+                }
             }
         });
     }
@@ -119,17 +122,6 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         } else {
             goToCurrentMonth.setVisibility(View.VISIBLE);
         }
-
-        // usun notatke
-        //-----------------------------------
-        // ma byc niewidoczny jak nie wybrano zadnej notatki
-        /*
-        if (Note.selectedNote.equals(null)) {
-            deleteNote.setVisibility(View.INVISIBLE);
-        } else {
-            deleteNote.setVisibility(View.VISIBLE);
-        }
-         */
     }
 
     // ----------------------------------------
@@ -163,7 +155,6 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
     // zmiana notatek na String i wypelnienie listView
     private void fillListView() {
         List<Note> dailyNotes = new ArrayList<>();
-
         for (int i = 0; i < notesList.size(); i++) {
             if (CalendarOperations.selectedDate.equals(notesList.get(i).getDate())) {
                 dailyNotes.add(notesList.get(i));
