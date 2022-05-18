@@ -65,9 +65,6 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Note.selectedNote = String.valueOf(adapterView.getItemAtPosition(position));
-                // odznaczenie notatki, gdy jest wybrana
-                // nie dziala
-                System.out.println(position + Note.selectedNote);
                 setMonthView();
             }
         });
@@ -88,7 +85,7 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         });
 
         //-------------------------------------------------------
-        // dorobic
+        // kopiowanie sie notatki
         deleteNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
