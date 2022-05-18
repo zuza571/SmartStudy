@@ -23,6 +23,7 @@ public class NoteAdapter extends ArrayAdapter<String> {
 
         TextView noteCell = convertView.findViewById(R.id.noteCell);
 
+        // zaznaczaja sie kolorem 2 takie same notatki
         if (convertView != null) {
             if (note.equals(Note.selectedNote))
                 noteCell.setBackgroundColor(Color.parseColor("#CCE5FF"));
