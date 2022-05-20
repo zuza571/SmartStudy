@@ -1,18 +1,18 @@
 package android.smartstudy;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Lesson {
     private int id;
     private LocalTime startTime;
-    private LocalDate dayOfWeek;
+    private String dayOfWeek;
     private String room;
     private String text;
     private int duration;
     private User lessonOwner;
+    static String selectedLesson;
 
-    public Lesson(LocalTime startTime, LocalDate dayOfWeek, String room, String text, int duration, User lessonOwner) {
+    public Lesson(LocalTime startTime, String dayOfWeek, String room, String text, int duration, User lessonOwner) {
         this.startTime = startTime;
         this.dayOfWeek = dayOfWeek;
         this.room = room;
@@ -29,7 +29,7 @@ public class Lesson {
         return startTime;
     }
 
-    public LocalDate getDayOfWeek() {
+    public String getDayOfWeek() {
         return dayOfWeek;
     }
 
@@ -57,7 +57,7 @@ public class Lesson {
         this.startTime = startTime;
     }
 
-    public void setDayOfWeek(LocalDate dayOfWeek) {
+    public void setDayOfWeek(String dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
     }
 
@@ -75,5 +75,10 @@ public class Lesson {
 
     public void setLessonOwner(User lessonOwner) {
         this.lessonOwner = lessonOwner;
+    }
+
+    @Override
+    public String toString() {
+        return text;
     }
 }

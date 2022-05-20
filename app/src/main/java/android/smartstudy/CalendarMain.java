@@ -80,7 +80,6 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
             @Override
             public void onClick(View view) {
                 notesList = myDB.deleteNote(Note.selectedNote, notesList, currentUser);
-                System.out.println(notesList);
                 setMonthView();
 
             }

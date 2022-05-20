@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
 import android.widget.Toast;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -136,8 +135,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
 
         String startTime = lesson.getStartTime().toString();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E");
-        String dayOfWeek = lesson.getDayOfWeek().format(formatter);
+        String dayOfWeek = lesson.getDayOfWeek();
 
         cv.put(TABLE_COLUMN_START_LESSON, startTime);
         cv.put(TABLE_COLUMN_DAY_LESSON, dayOfWeek);
@@ -221,10 +219,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         List<Lesson> lessons = new ArrayList<>();
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E");
         while (!cursorLesson.isAfterLast()) {
             LocalTime startLesson = LocalTime.parse(cursorLesson.getString(1));
-            LocalDate dayOfWeek = LocalDate.parse(cursorLesson.getString(2), formatter);
+            String dayOfWeek = cursorLesson.getString(2);
             String room = cursorLesson.getString(3);
             String text = cursorLesson.getString(4);
             int duration = Integer.parseInt(cursorLesson.getString(5));

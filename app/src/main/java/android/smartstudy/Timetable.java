@@ -6,12 +6,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +22,9 @@ public class Timetable extends AppCompatActivity {
     private List<String> currentUserData;
     private DataBaseHelper myDB;
     private TextView currentDay, previousDay, nextDay;
-    private Button addLesson;
+    private Button addLesson, deleteLesson;
+    ListView lvLessons;
+    static List <Lesson> lessons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,8 @@ public class Timetable extends AppCompatActivity {
         previousDay = findViewById(R.id.previousDayButton);
         nextDay = findViewById(R.id.nextDayButton);
         addLesson = findViewById(R.id.addLessonButton);
-        ListView lvHours = findViewById(R.id.hoursListView);
+        deleteLesson = findViewById(R.id.deleteLessonButton);
+        lvLessons = findViewById(R.id.lessonsListView);
 
         myDB = new DataBaseHelper(Timetable.this);
         currentUser = new User();
@@ -46,8 +48,19 @@ public class Timetable extends AppCompatActivity {
         currentUserData.addAll(myDB.current_user_data(login));
         currentUser.current_user(currentUser, currentUserData);
 
+        lessons = myDB.getAllLessons(currentUser);
+
         CalendarOperations.selectedDate = LocalDate.now();
+
         setDayView();
+
+        lvLessons.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Lesson.selectedLesson = String.valueOf(adapterView.getItemAtPosition(position));
+                setDayView();
+            }
+        });
 
         addLesson.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,14 +69,20 @@ public class Timetable extends AppCompatActivity {
             }
         });
 
-
+        deleteLesson.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lessons = myDB.deleteLesson(Lesson.selectedLesson, lessons, currentUser);
+                setDayView();
+            }
+        });
     }
 
     private void setDayView () {
         currentDay.setText(selectedDate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault()));
         previousDay.setText(selectedDate.minusDays(1).getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault()));
         nextDay.setText(selectedDate.plusDays(1).getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault()));
-        fillLessonLv();
+        fillLessonListView();
     }
 
     public void previousDay (View view) {
@@ -79,25 +98,32 @@ public class Timetable extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setDayView();
+        fillLessonListView();
     }
 
-    private void fillLessonLv () {
-        List <Lesson> list = new ArrayList<>();
-        //List <Lesson> lessons = myDB.getAllLessons(currentUser);
-        List <Note> dailyLessons = new ArrayList<>();
+    private void fillLessonListView() {
+        List <Lesson> dailyLessons = new ArrayList<>();
 
-        for (int hour = 0; hour < 24; hour++) {
-            LocalTime time = LocalTime.of(hour,0);
-
-
-
-
+        for (int i = 0; i < lessons.size(); i++) {
+            if (CalendarOperations.dayFormatter(selectedDate).equals(lessons.get(i).getDayOfWeek())) {
+                dailyLessons.add(lessons.get(i));
+                System.out.println(lessons.get(i).getText());
+            }
         }
+
+        String [] lessonsToString = new String[dailyLessons.size()];
+
+        int i = 0;
+        for (Lesson lesson : dailyLessons) {
+            lessonsToString[i] = lesson.getText();
+            i += 1;
+        }
+
+        // adapter
+        TimetableAdapter adapter = new TimetableAdapter(this, lessonsToString);
+        lvLessons.setAdapter(adapter);
     }
-
-
-
+    
     public void openAddLesson() {
         Intent intent = new Intent(this, AddLesson.class);
         Bundle bundle = new Bundle();

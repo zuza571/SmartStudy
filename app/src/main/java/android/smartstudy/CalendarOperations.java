@@ -1,6 +1,7 @@
 package android.smartstudy;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -24,6 +25,11 @@ public class CalendarOperations {
     public static String dayFormatter(LocalDate date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E");
         return date.format(formatter);
+    }
+
+    public static String timeFormatter(LocalTime time) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return time.format(formatter);
     }
 
     // podzial miesiaca na poszczegolne dni

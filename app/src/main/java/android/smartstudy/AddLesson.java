@@ -61,11 +61,11 @@ public class AddLesson extends AppCompatActivity {
                 int hour = Integer.parseInt(hours.getText().toString());
                 int mins = Integer.parseInt(minutes.getText().toString());
                 String hoursAndMinutes;
-                if (hour < 10) {
+                if (hour < 10 && mins != 0) {
                    hoursAndMinutes = "0" + hour + ":" + mins;
                 }
-                else if (mins == 0) {
-                    hoursAndMinutes = hour + ":" + mins + "0";
+                else if (hour < 10 && mins == 0) {
+                    hoursAndMinutes = "0" + hour + ":00";
                 } else {
                     hoursAndMinutes = hour + ":" + mins;
                 }
@@ -76,8 +76,8 @@ public class AddLesson extends AppCompatActivity {
                 if (newLessonName.length() > 1 && hour >= 0 && hour <= 23 && mins >= 0 && mins <= 59
                 && newLessonRoom.length() > 0 && newLessonDuration >= 20 && newLessonDuration <= 200) {
                     LocalTime startTime = LocalTime.parse(hoursAndMinutes, DateTimeFormatter.ISO_LOCAL_TIME);
-                    Lesson newLesson = new Lesson(newLessonName, startTime, CalendarOperations.selectedDate,
-                            newLessonRoom, newLessonDuration, currentUser);
+                    Lesson newLesson = new Lesson(startTime, CalendarOperations.dayFormatter(CalendarOperations.selectedDate),
+                            newLessonRoom, newLessonName, newLessonDuration, currentUser);
                     myDB.addLesson(newLesson);
                     saveLesson();
                 } else {

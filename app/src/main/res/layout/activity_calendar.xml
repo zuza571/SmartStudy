@@ -75,7 +75,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/calendarTextViewPon"
+            android:text="@string/calendarTextViewMon"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
@@ -84,7 +84,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/calendarTextViewWto"
+            android:text="@string/calendarTextViewTue"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
@@ -93,7 +93,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/calednarTextViewSr"
+            android:text="@string/calednarTextViewWed"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
@@ -102,7 +102,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/calendarTextViewCzw"
+            android:text="@string/calendarTextViewThu"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
@@ -111,7 +111,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/calendarTextViewPt"
+            android:text="@string/calendarTextViewFri"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
@@ -120,7 +120,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/calendarTextViewSob"
+            android:text="@string/calendarTextViewSat"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
@@ -129,7 +129,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/calendarTextViewNiedz"
+            android:text="@string/calendarTextViewSun"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
@@ -176,7 +176,7 @@
             android:layout_gravity="center"
             android:layout_weight="1.5"
             android:background="@null"
-            android:text="@string/calendarButtonUsunNotatke"
+            android:text="@string/calendarButtonDeleteNote"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/black" />

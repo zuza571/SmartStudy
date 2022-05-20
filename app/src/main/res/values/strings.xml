@@ -24,75 +24,77 @@
     <!-- Stringi w activity_add_lesson -->
     <string name="addLessonTextViewMain">Dodaj lekcję:</string>
     <string name="addLessonEditTextHint">nazwa</string>
-    <string name="addLessonTextViewTimeOfStart">godzina rozpoczęcia</string>
+    <string name="addLessonTextViewStartTime">godzina rozpoczęcia</string>
     <string name="addLessonEditTextHH">HH</string>
     <string name="addLessonTextViewHour">:</string>
     <string name="addLessonEditTextMM">MM</string>
-    <string name="addLessonEditTextDuringHint">czas trwania</string>
+    <string name="addLessonEditTextDurationHint">czas trwania</string>
     <string name="addLessonTextViewMin">min</string>
     <string name="addLessonEditTextRoomHint">sala</string>
     <string name="addLessonTextViewDay">Day</string>
-    <string name="addLessonButtonZapisz">Zapisz</string>
-    <string name="addLessonButtonAnuluj">Anuluj</string>
+    <string name="addLessonButtonSave">Zapisz</string>
+    <string name="addLessonButtonCancel">Anuluj</string>
 
     <!-- Stringi w activity_add_note -->
-    <string name="addNoteTextViewNazwa">Nazwa:</string>
+    <string name="addNoteTextViewName">Nazwa:</string>
     <string name="addNoteEditTextHintMain">...</string>
     <string name="addNoteTextViewDate">Date</string>
-    <string name="addNoteButtonZapisz">Zapisz</string>
-    <string name="addNoteButtonAnuluj">Anuluj</string>
+    <string name="addNoteButtonSave">Zapisz</string>
+    <string name="addNoteButtonCancel">Anuluj</string>
 
     <!-- Stringi w activity_calendar -->
     <string name="calendarButtonPrev">prev</string>
     <string name="calendarTextViewAct">act</string>
     <string name="calendarButtonNext">next</string>
     <string name="calendarButtonBackDate">Wróć do aktualnej daty</string>
-    <string name="calendarTextViewPon">PON</string>
-    <string name="calendarTextViewWto">WTO</string>
-    <string name="calednarTextViewSr">ŚR</string>
-    <string name="calendarTextViewCzw">CZW</string>
-    <string name="calendarTextViewPt">PT</string>
-    <string name="calendarTextViewSob">SOB</string>
-    <string name="calendarTextViewNiedz">NIEDZ</string>
+    <string name="calendarTextViewMon">PON</string>
+    <string name="calendarTextViewTue">WTO</string>
+    <string name="calednarTextViewWed">ŚR</string>
+    <string name="calendarTextViewThu">CZW</string>
+    <string name="calendarTextViewFri">PT</string>
+    <string name="calendarTextViewSat">SOB</string>
+    <string name="calendarTextViewSun">NIEDZ</string>
     <string name="calendarButtonAddNote">Dodaj nową notatkę</string>
-    <string name="calendarButtonUsunNotatke">Usuń notatkę</string>
+    <string name="calendarButtonDeleteNote">Usuń notatkę</string>
 
     <!-- Stringi w activity_login -->
     <string name="loginEditTextHintLogin">Login</string>
-    <string name="loginEditTextHintHaslo">Hasło</string>
-    <string name="loginButtonWstecz">Wstecz</string>
-    <string name="loginButtonZaloguj">Zaloguj</string>
+    <string name="loginEditTextHintPassword">Hasło</string>
+    <string name="loginButtonBack">Wstecz</string>
+    <string name="loginButtonLogin">Zaloguj</string>
 
     <!-- Stringi w activity_main_page -->
     <string name="mainPageTextView">Następne zajęcia: </string>
 
     <!-- Stringi w activity_register -->
-    <string name="registerEditTextHintImie">Imię</string>
-    <string name="registerEditTextHintNazwisko">Nazwisko</string>
-    <string name="registerEditTextHintKierunekStudiow">Kierunek studiów</string>
+    <string name="registerEditTextHintName">Imię</string>
+    <string name="registerEditTextHintSurname">Nazwisko</string>
+    <string name="registerEditTextHintFieldOfStudies">Kierunek studiów</string>
     <string name="registerEditTextHintLogin">Login</string>
-    <string name="registerEditTextHintHaslo">Hasło</string>
-    <string name="registerButtonWstecz">Wstecz</string>
-    <string name="registerButtonZalozKonto">Załóż konto</string>
+    <string name="registerEditTextHintPassword">Hasło</string>
+    <string name="registerButtonBack">Wstecz</string>
+    <string name="registerButtonRegister">Załóż konto</string>
 
     <!-- Stringi w activity_start -->
-    <string name="startButtonZaloguj">Zaloguj</string>
-    <string name="startButtonZalozKonto">Załóż konto</string>
+    <string name="startButtonLogin">Zaloguj</string>
+    <string name="startButtonRegister">Załóż konto</string>
 
     <!-- Stringi w activity_timetable -->
     <string name="timetableButtonPrev">prev</string>
     <string name="timetableTextViewActualDay">actualDay</string>
     <string name="timetableButtonNext">next</string>
-    <string name="timetableButtonDodajLekcje">Dodaj lekcję</string>
+    <string name="timetableButtonAddLesson">Dodaj lekcję</string>
+    <string name="timetableButtonDeleteLesson">Usuń lekcję</string>
 
     <!-- Stringi w calendar_cell -->
     <string name="calendarCellTextView">1</string>
 
-    <!-- Stringi w hour_cell_timetable -->
-    <string name="hourCellTimetableTextView">lesson</string>
-
     <!-- Stringi w note_cell -->
     <string name="noteCellTextView">Note</string>
 
+    <!-- Stringi w lesson_cell -->
+    <string name="lessonCellTextView">Lesson</string>
+    <string name="lessonCellTime">Time</string>
+    <string name="lessonCellRoom">Room</string>
 
 </resources>
