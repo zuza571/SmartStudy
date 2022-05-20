@@ -136,7 +136,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
 
         String startTime = lesson.getStartTime().toString();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E");
         String dayOfWeek = lesson.getDayOfWeek().format(formatter);
 
         cv.put(TABLE_COLUMN_START_LESSON, startTime);
