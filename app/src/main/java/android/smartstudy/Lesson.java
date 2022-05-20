@@ -12,8 +12,7 @@ public class Lesson {
     private int duration;
     private User lessonOwner;
 
-    public Lesson(String text, LocalTime startTime, LocalDate dayOfWeek, String room, int duration, User lessonOwner) {
-        this.id = id;
+    public Lesson(LocalTime startTime, LocalDate dayOfWeek, String room, String text, int duration, User lessonOwner) {
         this.startTime = startTime;
         this.dayOfWeek = dayOfWeek;
         this.room = room;

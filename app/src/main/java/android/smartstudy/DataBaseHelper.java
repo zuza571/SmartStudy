@@ -211,6 +211,32 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return notes;
     }
 
+    List<Lesson> getAllLesson(User currentUser) {
+        String userLogin = currentUser.getLogin();
+        String queryLesson = "SELECT * FROM " + TABLE_NAME_LESSON + " WHERE " + TABLE_COLUMN_USER_LOGIN_LESSON + " = " + "\"" + userLogin + "\"";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursorLesson = db.rawQuery(queryLesson, null);
+        cursorLesson.moveToFirst();
+
+        List<Lesson> lessons = new ArrayList<>();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E");
+        while (!cursorLesson.isAfterLast()) {
+            LocalTime startLesson = LocalTime.parse(cursorLesson.getString(1));
+            LocalDate dayOfWeek = LocalDate.parse(cursorLesson.getString(2), formatter);
+            String room = cursorLesson.getString(3);
+            String text = cursorLesson.getString(4);
+            int duration = Integer.parseInt(cursorLesson.getString(5));
+
+            Lesson lesson = new Lesson(startLesson, dayOfWeek, room, text, duration, currentUser);
+            lessons.add(lesson);
+            cursorLesson.moveToNext();
+        }
+
+        return lessons;
+    }
+
     List<Note> deleteNote(String text, List<Note> notes, User currentUser) {
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TABLE_NAME_NOTE, "Text=?", new String[]{text});
