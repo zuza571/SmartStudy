@@ -211,7 +211,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return notes;
     }
 
-    List<Lesson> getAllLesson(User currentUser) {
+    List<Lesson> getAllLessons(User currentUser) {
         String userLogin = currentUser.getLogin();
         String queryLesson = "SELECT * FROM " + TABLE_NAME_LESSON + " WHERE " + TABLE_COLUMN_USER_LOGIN_LESSON + " = " + "\"" + userLogin + "\"";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -252,4 +252,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return notes;
         }
     }
+
+    //List<Lesson> deleteLesson()
 }
