@@ -5,12 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.TextView;
 
 public class MainPage extends AppCompatActivity {
-
     String login;
     Button calendarButton, timetableButton;
 
@@ -21,9 +18,12 @@ public class MainPage extends AppCompatActivity {
 
         calendarButton = findViewById(R.id.calendarButton);
         timetableButton = findViewById(R.id.timetableButton);
+        TextView nextLesson = findViewById(R.id.nextLesson);
 
         Bundle bundle = getIntent().getExtras();
         login = bundle.getString("Login");
+
+        nextLesson.setText("Następne zajęcia: " + "WPISAĆ" );
 
         calendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,8 +38,6 @@ public class MainPage extends AppCompatActivity {
                 openTimetable();
             }
         });
-
-
     }
 
     public void openTimetable () {

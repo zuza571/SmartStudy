@@ -42,6 +42,7 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         lvNotesList = findViewById(R.id.lvNotesList);
         Button deleteNote = findViewById(R.id.deleteNote);
         Button addNote = findViewById(R.id.addNoteButton);
+        Button backButton = findViewById(R.id.calendarToMainPage);
 
         myDB = new DataBaseHelper(CalendarMain.this);
         currentUser = new User();
@@ -90,6 +91,13 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
             public void onClick(View view) {
                 CalendarOperations.selectedDate = LocalDate.now();
                 setMonthView();
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openMainPage();
             }
         });
     }
@@ -172,6 +180,14 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
 
     public void openAddNote() {
         Intent intent = new Intent(this, AddNote.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("Login", login);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void openMainPage() {
+        Intent intent = new Intent(this, MainPage.class);
         Bundle bundle = new Bundle();
         bundle.putString("Login", login);
         intent.putExtras(bundle);

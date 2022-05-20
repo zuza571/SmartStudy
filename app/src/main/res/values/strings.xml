@@ -56,6 +56,7 @@
     <string name="calendarTextViewSun">NIEDZ</string>
     <string name="calendarButtonAddNote">Dodaj nową notatkę</string>
     <string name="calendarButtonDeleteNote">Usuń notatkę</string>
+    <string name="calendarBackButton">Strona Główna</string>
 
     <!-- Stringi w activity_login -->
     <string name="loginEditTextHintLogin">Login</string>
@@ -64,7 +65,7 @@
     <string name="loginButtonLogin">Zaloguj</string>
 
     <!-- Stringi w activity_main_page -->
-    <string name="mainPageTextView">Następne zajęcia: </string>
+    <string name="mainPageTextView">next</string>
 
     <!-- Stringi w activity_register -->
     <string name="registerEditTextHintName">Imię</string>
@@ -85,6 +86,7 @@
     <string name="timetableButtonNext">next</string>
     <string name="timetableButtonAddLesson">Dodaj lekcję</string>
     <string name="timetableButtonDeleteLesson">Usuń lekcję</string>
+    <string name="timetableBackButton">Strona Główna</string>
 
     <!-- Stringi w calendar_cell -->
     <string name="calendarCellTextView">1</string>

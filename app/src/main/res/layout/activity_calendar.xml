@@ -9,10 +9,21 @@
     android:orientation="vertical"
     tools:context=".CalendarMain">
 
-    <LinearLayout
+    <Button
+        android:id="@+id/calendarToMainPage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:background="#98C2E4"
+        android:text="@string/calendarBackButton"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="15sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="#98C2E4"
         android:orientation="horizontal">
 
@@ -164,7 +175,7 @@
             android:id="@+id/lvNotesList"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:dividerHeight="0sp"
             android:scrollbarSize="@dimen/fragment_vertical_margin">
         </ListView>

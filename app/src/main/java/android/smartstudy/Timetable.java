@@ -22,7 +22,6 @@ public class Timetable extends AppCompatActivity {
     private List<String> currentUserData;
     private DataBaseHelper myDB;
     private TextView currentDay, previousDay, nextDay;
-    private Button addLesson, deleteLesson;
     ListView lvLessons;
     static List <Lesson> lessons;
 
@@ -34,8 +33,9 @@ public class Timetable extends AppCompatActivity {
         currentDay = findViewById(R.id.currentDay);
         previousDay = findViewById(R.id.previousDayButton);
         nextDay = findViewById(R.id.nextDayButton);
-        addLesson = findViewById(R.id.addLessonButton);
-        deleteLesson = findViewById(R.id.deleteLessonButton);
+        Button addLesson = findViewById(R.id.addLessonButton);
+        Button deleteLesson = findViewById(R.id.deleteLessonButton);
+        Button backButton = findViewById(R.id.timetableToMainPage);
         lvLessons = findViewById(R.id.lessonsListView);
 
         myDB = new DataBaseHelper(Timetable.this);
@@ -74,6 +74,13 @@ public class Timetable extends AppCompatActivity {
             public void onClick(View view) {
                 lessons = myDB.deleteLesson(Lesson.selectedLesson, lessons, currentUser);
                 setDayView();
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openMainPage();
             }
         });
     }
@@ -126,6 +133,14 @@ public class Timetable extends AppCompatActivity {
     
     public void openAddLesson() {
         Intent intent = new Intent(this, AddLesson.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("Login", login);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void openMainPage() {
+        Intent intent = new Intent(this, MainPage.class);
         Bundle bundle = new Bundle();
         bundle.putString("Login", login);
         intent.putExtras(bundle);

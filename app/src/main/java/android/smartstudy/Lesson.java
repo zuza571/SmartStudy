@@ -4,12 +4,12 @@ import java.time.LocalTime;
 
 public class Lesson {
     private int id;
-    private LocalTime startTime;
-    private String dayOfWeek;
-    private String room;
+    private final LocalTime startTime;
+    private final String dayOfWeek;
+    private final String room;
     private String text;
-    private int duration;
-    private User lessonOwner;
+    private final int duration;
+    private final User lessonOwner;
     static String selectedLesson;
 
     public Lesson(LocalTime startTime, String dayOfWeek, String room, String text, int duration, User lessonOwner) {
@@ -53,28 +53,8 @@ public class Lesson {
         this.id = id;
     }
 
-    public void setStartTime(LocalTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public void setDayOfWeek(String dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
-    }
-
-    public void setRoom(String room) {
-        this.room = room;
-    }
-
     public void setText(String text) {
         this.text = text;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-    public void setLessonOwner(User lessonOwner) {
-        this.lessonOwner = lessonOwner;
     }
 
     @Override
