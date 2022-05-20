@@ -3,11 +3,11 @@ package android.smartstudy;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -56,22 +56,29 @@ public class AddLesson extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String newLessonName = lessonName.getText().toString();
+                int hour = Integer.parseInt(hours.getText().toString());
+                int mins = Integer.parseInt(minutes.getText().toString());
+                String hoursAndMinutes;
+                if (hour < 10) {
+                   hoursAndMinutes = "0" + hour + ":" + mins;
+                } else {
+                    hoursAndMinutes = hour + ":" + mins;
+                }
 
-                String hoursAndMinutes = hours.getText() + ":" + minutes.getText();
-
-                LocalTime startTime = LocalTime.parse(hoursAndMinutes, DateTimeFormatter.ISO_LOCAL_TIME);
-                System.out.println(startTime);
-
-                /*
-                int newLessonDuration = duration.getText();
+                int newLessonDuration = Integer.parseInt(duration.getText().toString());
                 String newLessonRoom = room.getText().toString();
 
-                Lesson newLesson = new Lesson(newLessonName, startTime, CalendarOperations.selectedDate,
-                        newLessonRoom, newLessonDuration, currentUser);
-                myDB.addLesson(newLesson);
-
-                 */
-                saveLesson();
+                if (newLessonName.length() > 1 && hour >= 0 && hour <= 23 && mins >= 0 && mins <= 59
+                && newLessonRoom.length() > 0 && newLessonDuration >= 20 && newLessonDuration <= 200) {
+                    LocalTime startTime = LocalTime.parse(hoursAndMinutes, DateTimeFormatter.ISO_LOCAL_TIME);
+                    Lesson newLesson = new Lesson(newLessonName, startTime, CalendarOperations.selectedDate,
+                            newLessonRoom, newLessonDuration, currentUser);
+                    myDB.addLesson(newLesson);
+                    saveLesson();
+                } else {
+                    Toast.makeText(AddLesson.this, "Wprowadzone dane są niepoprawne lub za krótkie",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

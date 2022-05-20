@@ -53,7 +53,6 @@ public class AddNote extends AppCompatActivity {
                 String newNoteName = noteName.getText().toString();
                 if (newNoteName.length() > 2) {
                     Note newNote = new Note(newNoteName, CalendarOperations.selectedDate, currentUser);
-                    // Note.notesList.add(newNote);
                     myDB.addNote(newNote);
                     activitySaveEdition();
                 } else {

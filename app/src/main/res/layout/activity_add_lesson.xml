@@ -29,7 +29,6 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="25sp"
-        android:minLines="3"
         android:inputType="text"/>
 
     <LinearLayout
@@ -58,9 +57,8 @@
             android:layout_weight="4"
             android:background="#10000000"
             android:hint="@string/addLessonEditTextHH"
-            android:minLines="1"
             android:maxLength="2"
-            android:inputType="text"
+            android:inputType="number"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
@@ -84,9 +82,8 @@
             android:layout_weight="4"
             android:background="#10000000"
             android:hint="@string/addLessonEditTextMM"
-            android:minLines="2"
             android:maxLength="2"
-            android:inputType="text"
+            android:inputType="number"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
@@ -114,9 +111,7 @@
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:textSize="25sp"
-            android:minLines="2"
-            android:maxLength="3"
-            android:inputType="text"/>
+            android:inputType="number"/>
 
         <TextView
             android:layout_width="0dp"
@@ -142,7 +137,6 @@
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="25sp"
-        android:minLines="1"
         android:inputType="text"/>
 
     <TextView
