@@ -192,7 +192,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     List<Note> getAllNotes(User currentUser) {
         String userLogin = currentUser.getLogin();
-        System.out.println(userLogin);
         String queryNote = "SELECT * FROM " + TABLE_NAME_NOTE + " WHERE " + TABLE_COLUMN_USER_LOGIN_NOTE + " = " + "\"" + userLogin + "\"";
         SQLiteDatabase db = this.getReadableDatabase();
 
