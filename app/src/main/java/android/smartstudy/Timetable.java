@@ -11,8 +11,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.time.LocalDate;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Timetable extends AppCompatActivity {
     private User currentUser;
@@ -57,9 +59,10 @@ public class Timetable extends AppCompatActivity {
     }
 
     private void setDayView () {
-        currentDay.setText(CalendarOperations.dayFormatter(selectedDate));
-        previousDay.setText(CalendarOperations.dayFormatter(selectedDate.minusDays(1)));
-        nextDay.setText(CalendarOperations.dayFormatter(selectedDate.plusDays(1)));
+        currentDay.setText(selectedDate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault()));
+        previousDay.setText(selectedDate.minusDays(1).getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault()));
+        nextDay.setText(selectedDate.plusDays(1).getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault()));
+        fillLessonLv();
     }
 
     public void previousDay (View view) {
@@ -71,6 +74,18 @@ public class Timetable extends AppCompatActivity {
         CalendarOperations.selectedDate = CalendarOperations.selectedDate.plusDays(1);
         setDayView();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setDayView();
+    }
+
+    private void fillLessonLv () {
+        //ArrayList
+    }
+
+
 
     public void openAddLesson() {
         Intent intent = new Intent(this, AddLesson.class);
