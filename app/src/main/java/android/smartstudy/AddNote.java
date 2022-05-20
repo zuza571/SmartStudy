@@ -55,7 +55,6 @@ public class AddNote extends AppCompatActivity {
                     Note newNote = new Note(newNoteName, CalendarOperations.selectedDate, currentUser);
                     // Note.notesList.add(newNote);
                     myDB.addNote(newNote);
-
                     activitySaveEdition();
                 } else {
                     Toast.makeText(AddNote.this, "Notatka jest za krótka!", Toast.LENGTH_SHORT).show();

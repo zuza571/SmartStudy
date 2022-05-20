@@ -9,7 +9,7 @@ import android.widget.Button;
 public class MainPage extends AppCompatActivity {
 
     String login;
-    Button calendarButton;
+    Button calendarButton, timetableButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +17,7 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
 
         calendarButton = findViewById(R.id.calendarButton);
+        timetableButton = findViewById(R.id.timetableButton);
 
         Bundle bundle = getIntent().getExtras();
         login = bundle.getString("Login");
@@ -28,10 +29,22 @@ public class MainPage extends AppCompatActivity {
             }
         });
 
+        timetableButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openTimetable();
+            }
+        });
+
+
     }
 
-    public void timetable (View view) {
-        startActivity(new Intent(this, Timetable.class));
+    public void openTimetable () {
+        Intent intent = new Intent(this, Timetable.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("Login", login);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     public void openCalendar() {
