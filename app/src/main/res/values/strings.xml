@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">SmartStudy</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -10,6 +11,10 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_zaloguj">Zaloguj</string>
+
+    <!-- Stringi w activity_login -->
+    <string name="loginBackButton">Wstecz</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -18,4 +23,19 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- Stringi w activity_add_lesson -->
+    <string name="addLessonTextViewMain">Dodaj lekcję:</string>
+    <string name="addLessonEditTextHint">nazwa</string>
+    <string name="addLessonTextViewTimeOfStart">godzina rozpoczęcia</string>
+    <string name="addLessonEditTextHH">HH</string>
+    <string name="addLessonTextViewHour">:</string>
+    <string name="addLessonEditTextMM">MM</string>
+    <string name="addLessonEditTextDuringHint">czas trwania</string>
+    <string name="addLessonTextViewMin">min</string>
+    <string name="addLessonEditTextRoomHint">sala</string>
+    <string name="addLessonTextViewDay">Day</string>
+    <string name="addLessonButtonZapisz">Zapisz</string>
+    <string name="addLessonButtonAnuluj">Anuluj</string>
+
 </resources>
