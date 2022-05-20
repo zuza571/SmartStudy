@@ -23,7 +23,7 @@
             android:layout_weight="2"
             android:background="#98C2E4"
             android:onClick="previousMonth"
-            android:text="prev"
+            android:text="@string/calendarButtonPrev"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="15sp" />
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:background="#98C2E4"
-            android:text="act"
+            android:text="@string/calendarTextViewAct"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -47,7 +47,7 @@
             android:layout_weight="2"
             android:background="#98C2E4"
             android:onClick="nextMonth"
-            android:text="next"
+            android:text="@string/calendarButtonNext"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="15sp" />
@@ -62,7 +62,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:background="#98C2E4"
-        android:text="Wróć do aktualnej daty"
+        android:text="@string/calendarButtonBackDate"
         android:textAllCaps="false"
         android:textColor="@color/black" />
 
@@ -75,7 +75,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="PON"
+            android:text="@string/calendarTextViewPon"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
@@ -84,7 +84,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="WTO"
+            android:text="@string/calendarTextViewWto"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
@@ -93,7 +93,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="ŚR"
+            android:text="@string/calednarTextViewSr"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
@@ -102,7 +102,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="CZW"
+            android:text="@string/calendarTextViewCzw"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
@@ -111,7 +111,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="PT"
+            android:text="@string/calendarTextViewPt"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
@@ -120,7 +120,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="SOB"
+            android:text="@string/calendarTextViewSob"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
@@ -129,7 +129,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="NIEDZ"
+            android:text="@string/calendarTextViewNiedz"
             android:textColor="@color/black"
             android:textAlignment="center"
             android:textSize="16sp" />
@@ -149,7 +149,7 @@
         android:layout_height="48dp"
         android:layout_gravity="center"
         android:background="#98C2E4"
-        android:text="Dodaj nową notatkę"
+        android:text="@string/calendarButtonAddNote"
         android:textAllCaps="false"
         android:textColor="@color/black" />
 
@@ -176,7 +176,7 @@
             android:layout_gravity="center"
             android:layout_weight="1.5"
             android:background="@null"
-            android:text="Usuń notatkę"
+            android:text="@string/calendarButtonUsunNotatke"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/black" />

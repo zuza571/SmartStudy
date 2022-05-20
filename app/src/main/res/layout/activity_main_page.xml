@@ -38,7 +38,7 @@
         android:layout_marginBottom="640dp"
         android:fontFamily="@font/waiting_for_the_sunrise"
         android:lineSpacingExtra="10sp"
-        android:text="Następne zajęcia: "
+        android:text="@string/mainPageTextView"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="25dp"
