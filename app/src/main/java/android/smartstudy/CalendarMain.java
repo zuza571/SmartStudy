@@ -76,23 +76,21 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
             }
         });
 
+        deleteNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                notesList = myDB.deleteNote(Note.selectedNote, notesList, currentUser);
+                System.out.println(notesList);
+                setMonthView();
+
+            }
+        });
+
         goToCurrentMonth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 CalendarOperations.selectedDate = LocalDate.now();
                 setMonthView();
-            }
-        });
-
-        //-------------------------------------------------------
-        // kopiowanie sie notatki
-        deleteNote.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (Note.selectedNote != "") {
-                    myDB.deleteNote(Note.selectedNote, notesList, currentUser);
-                    setMonthView();
-                }
             }
         });
     }
@@ -152,6 +150,7 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
     // zmiana notatek na String i wypelnienie listView
     private void fillListView() {
         List<Note> dailyNotes = new ArrayList<>();
+
         for (int i = 0; i < notesList.size(); i++) {
             if (CalendarOperations.selectedDate.equals(notesList.get(i).getDate())) {
                 dailyNotes.add(notesList.get(i));
@@ -160,13 +159,14 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
 
         // zmiana na String
         String [] notesToString = new String[dailyNotes.size()];
+
         int i = 0;
         for (Note note : dailyNotes) {
-            notesToString[i] = note.toString();
+            notesToString[i] = note.getText();
             i += 1;
         }
 
-        // ustawienie adaptera
+        // ustawienie adaptera notatki
         NoteAdapter adapter = new NoteAdapter(this, notesToString);
         lvNotesList.setAdapter(adapter);
     }

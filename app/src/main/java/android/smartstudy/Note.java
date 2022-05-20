@@ -3,13 +3,12 @@ package android.smartstudy;
 import java.time.LocalDate;
 
 public class Note {
-    private int id;
     private String text;
     private LocalDate date;
     private User noteOwner;
-    public static String selectedNote;
+    public static String selectedNote = "";
 
-    public Note(String text, LocalDate date, User noteOwner) {
+    public Note (String text, LocalDate date, User noteOwner) {
         this.text = text;
         this.date = date;
         this.noteOwner = noteOwner;

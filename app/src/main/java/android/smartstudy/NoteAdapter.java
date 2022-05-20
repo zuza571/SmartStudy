@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.time.LocalDate;
+
 public class NoteAdapter extends ArrayAdapter<String> {
 
     public NoteAdapter(Context context, String[] notes) {
@@ -23,9 +25,9 @@ public class NoteAdapter extends ArrayAdapter<String> {
 
         TextView noteCell = convertView.findViewById(R.id.noteCell);
 
-        // zaznaczaja sie kolorem 2 takie same notatki
         if (convertView != null) {
-            if (note.equals(Note.selectedNote))
+            // porownujemy miejsce w pamieci, a nie tekst!
+            if (note == Note.selectedNote)
                 noteCell.setBackgroundColor(Color.parseColor("#CCE5FF"));
         }
 

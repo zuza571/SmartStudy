@@ -220,9 +220,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return notes;
         }else{
             Toast.makeText(context, "Pomyślnie usunięto notatkę.", Toast.LENGTH_SHORT).show();
-            for(int i = 0; i < notes.size(); i++) {
-                notes.remove(i);
-            }
+
+            notes.removeAll(notes);
+
             notes.addAll(getAllNotes(currentUser));
             return notes;
         }
