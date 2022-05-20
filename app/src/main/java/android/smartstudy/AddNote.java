@@ -13,9 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddNote extends AppCompatActivity {
-    private EditText noteName;
-    private TextView noteDate;
-    private Button saveEdition, cancelEdition;
     private User currentUser;
     private String login;
     private List<String> currentUserData;
@@ -26,13 +23,13 @@ public class AddNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
 
-        noteName = findViewById(R.id.noteName);
-        noteDate = findViewById(R.id.noteDate);
-        saveEdition = findViewById(R.id.saveEditionButton);
-        cancelEdition = findViewById(R.id.cancelEditionButton);
+        EditText noteName = findViewById(R.id.noteName);
+        TextView noteDate = findViewById(R.id.noteDate);
+        Button saveEdition = findViewById(R.id.saveEditionButton);
+        Button cancelEdition = findViewById(R.id.cancelEditionButton);
         myDB = new DataBaseHelper(AddNote.this);
         currentUser = new User();
-        currentUserData = new ArrayList<String>();
+        currentUserData = new ArrayList<>();
 
         Bundle bundle = getIntent().getExtras();
         login = bundle.getString("Login");

@@ -22,7 +22,7 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
     private TextView currentMonth, previousMonth, nextMonth;
     private RecyclerView recyclerView; // okno z wszystkimi dniami
     private ListView lvNotesList;
-    private Button goToCurrentMonth, deleteNote, addNote;
+    private Button goToCurrentMonth;
     private String login;
     private List<String> currentUserData;
     private static User currentUser;
@@ -39,9 +39,9 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         previousMonth = findViewById(R.id.previousMonthButton);
         nextMonth = findViewById(R.id.nextMonthButton);
         goToCurrentMonth = findViewById(R.id.goToCurrentMonth);
-        deleteNote = findViewById(R.id.deleteNote);
-        addNote = findViewById(R.id.addNoteButton);
         lvNotesList = findViewById(R.id.lvNotesList);
+        Button deleteNote = findViewById(R.id.deleteNote);
+        Button addNote = findViewById(R.id.addNoteButton);
 
         myDB = new DataBaseHelper(CalendarMain.this);
         currentUser = new User();

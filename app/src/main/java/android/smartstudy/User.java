@@ -1,6 +1,5 @@
 package android.smartstudy;
 
-import java.nio.channels.InterruptedByTimeoutException;
 import java.util.List;
 
 public class User {
