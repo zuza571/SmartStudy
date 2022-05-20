@@ -243,15 +243,27 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if(result == -1){
             Toast.makeText(context, "Nie udało się usunąć notatki.", Toast.LENGTH_SHORT).show();
             return notes;
-        }else{
+        } else {
             Toast.makeText(context, "Pomyślnie usunięto notatkę.", Toast.LENGTH_SHORT).show();
 
             notes.removeAll(notes);
-
             notes.addAll(getAllNotes(currentUser));
             return notes;
         }
     }
 
-    //List<Lesson> deleteLesson()
+    List<Lesson> deleteLesson(String text, List<Lesson> lessons, User currentUser) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(TABLE_NAME_LESSON, "Text=?", new String[]{text});
+        if(result == -1){
+            Toast.makeText(context, "Nie udało się usunąć lekcji.", Toast.LENGTH_SHORT).show();
+            return lessons;
+        } else {
+            Toast.makeText(context, "Pomyślnie usunięto lekcje.", Toast.LENGTH_SHORT).show();
+
+            lessons.removeAll(lessons);
+            lessons.addAll(getAllLessons(currentUser));
+            return lessons;
+        }
+    }
 }
