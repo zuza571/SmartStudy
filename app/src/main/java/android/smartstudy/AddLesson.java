@@ -63,6 +63,9 @@ public class AddLesson extends AppCompatActivity {
                 String hoursAndMinutes;
                 if (hour < 10) {
                    hoursAndMinutes = "0" + hour + ":" + mins;
+                }
+                else if (mins == 0) {
+                    hoursAndMinutes = hour + ":" + mins + "0";
                 } else {
                     hoursAndMinutes = hour + ":" + mins;
                 }

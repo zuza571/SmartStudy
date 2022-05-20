@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +83,17 @@ public class Timetable extends AppCompatActivity {
     }
 
     private void fillLessonLv () {
-        //ArrayList
+        List <Lesson> list = new ArrayList<>();
+        //List <Lesson> lessons = myDB.getAllLessons(currentUser);
+        List <Note> dailyLessons = new ArrayList<>();
+
+        for (int hour = 0; hour < 24; hour++) {
+            LocalTime time = LocalTime.of(hour,0);
+
+
+
+
+        }
     }
 
 
