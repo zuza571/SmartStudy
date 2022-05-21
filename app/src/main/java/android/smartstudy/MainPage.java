@@ -94,10 +94,10 @@ public class MainPage extends AppCompatActivity {
 
         List<Lesson> lessons = myDB.getAllLessons(currentUserUser);
 
+        String lessonDay = "";
         for (int i = 0; i < lessons.size(); i++) {
             String lessonDayString = lessons.get(i).getDayOfWeek();
             int lessonDayInt = 0;
-            String lessonDay = "";
             switch (lessonDayString) {
                 case "Mon":
                     lessonDayInt = 1;
