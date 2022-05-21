@@ -154,6 +154,8 @@ public class Timetable extends AppCompatActivity {
             for (int j = i + 1; j < lessons.size(); j++) {
                 if (lessons.get(j).getStartTime().getHour() < lessons.get(i).getStartTime().getHour()) {
                     Collections.swap(lessons, lessons.indexOf(lessons.get(j)), lessons.indexOf(lessons.get(i)));
+                } else if (lessons.get(j).getStartTime().getHour() == lessons.get(i).getStartTime().getHour() && lessons.get(j).getStartTime().getMinute() < lessons.get(i).getStartTime().getMinute()) {
+                    Collections.swap(lessons, lessons.indexOf(lessons.get(j)), lessons.indexOf(lessons.get(i)));
                 }
             }
         }
