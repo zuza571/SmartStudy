@@ -101,31 +101,24 @@ public class MainPage extends AppCompatActivity {
             switch (lessonDayString) {
                 case "Mon":
                     lessonDayInt = 1;
-                    lessonDay = "Pon";
                     break;
                 case "Tue":
                     lessonDayInt = 2;
-                    lessonDay = "Wto";
                     break;
                 case "Wed":
                     lessonDayInt = 3;
-                    lessonDay = "Śro";
                     break;
                 case "Thu":
                     lessonDayInt = 4;
-                    lessonDay = "Czw";
                     break;
                 case "Fri":
                     lessonDayInt = 5;
-                    lessonDay = "Pt";
                     break;
                 case "Sat":
                     lessonDayInt = 6;
-                    lessonDay = "Sob";
                     break;
                 case "Sun":
                     lessonDayInt = 7;
-                    lessonDay = "Nie";
                     break;
                 default:
                     break;
@@ -133,9 +126,11 @@ public class MainPage extends AppCompatActivity {
 
             if (lessonDayInt > currentDay) {
                 lessonDayInt = currentDay - lessonDayInt;
+                lessonDay = lessons.get(i).getDayOfWeek();
             } else if (currentDay == lessonDayInt){
                 if (now.getHour() > lessons.get(i).getStartTime().getHour()) {
                     lessonDayInt = 7;
+                    lessonDay = lessons.get(i).getDayOfWeek();
                 } else if (now.getHour() < lessons.get(i).getStartTime().getHour()) {
                     lessonDayInt = 0;
                     lessonDay = "dziś";
@@ -146,6 +141,7 @@ public class MainPage extends AppCompatActivity {
                     lessonDay = "dziś";
                 } else {
                     lessonDayInt = 0;
+                    lessonDay = lessons.get(i).getDayOfWeek();
                 }
             }
             else {
