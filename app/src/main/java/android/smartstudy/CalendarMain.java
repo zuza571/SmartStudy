@@ -58,6 +58,7 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         notesList = myDB.getAllNotes(currentUser);
 
         CalendarOperations.selectedDate = LocalDate.now();
+        Note.selectedNote = "";
 
         setMonthView();
 
@@ -80,9 +81,11 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         deleteNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                notesList = myDB.deleteNote(Note.selectedNote, notesList, currentUser);
-                setMonthView();
-
+                if(Note.selectedNote != "") {
+                    notesList = myDB.deleteNote(Note.selectedNote, notesList, currentUser);
+                    setMonthView();
+                    Note.selectedNote = "";
+                }
             }
         });
 

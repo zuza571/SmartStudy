@@ -63,20 +63,29 @@ public class AddLesson extends AppCompatActivity {
                 int hour = Integer.parseInt(hours.getText().toString());
                 int mins = Integer.parseInt(minutes.getText().toString());
                 String hoursAndMinutes;
-                if(hour == 00 && mins == 0) {
+                if(hour == 0 && mins == 0) {
                     hoursAndMinutes = "00:00";
                 }
-                else if (hour == 00 && mins != 0) {
+                else if (hour == 0 && mins >= 10) {
                     hoursAndMinutes = "00:" + mins;
                 }
-                else if (hour < 10 && mins != 0) {
-                   hoursAndMinutes = "0" + hour + ":" + mins;
+                else if (hour == 0 && (mins != 0 && mins < 10)) {
+                    hoursAndMinutes = "00:0" + mins;
                 }
                 else if (hour < 10 && mins == 0) {
                     hoursAndMinutes = "0" + hour + ":00";
                 }
+                else if (hour < 10 && (mins != 0 && mins < 10)) {
+                    hoursAndMinutes = "0" + hour + ":0" + mins;
+                }
+                else if (hour < 10 && mins >= 10) {
+                   hoursAndMinutes = "0" + hour + ":" + mins;
+                }
                 else if (hour >= 10 && mins == 0) {
                     hoursAndMinutes = hour + ":00";
+                }
+                else if (hour >= 10 && (mins != 0 && mins < 10)) {
+                    hoursAndMinutes = hour + ":0" + mins;
                 } else {
                     hoursAndMinutes = hour + ":" + mins;
                 }
@@ -138,7 +147,7 @@ public class AddLesson extends AppCompatActivity {
                             if (endTimeNewLesson.getMinute() > dailyLessons.get(i).getStartTime().getMinute()) {
                                 if (endTimeNewLesson.getHour() < endTime.getHour()) {
                                     collision = true;
-                                } else if (endTimeNewLesson.getHour() == endTime.getHour() && endTimeNewLesson.getMinute() < endTime.getMinute()) {
+                                } else if (endTimeNewLesson.getHour() == endTime.getHour() && endTimeNewLesson.getMinute() <= endTime.getMinute()) {
                                     collision = true;
                                 }
                             }

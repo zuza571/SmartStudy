@@ -52,6 +52,7 @@ public class Timetable extends AppCompatActivity {
         lessons = myDB.getAllLessons(currentUser);
 
         CalendarOperations.selectedDate = LocalDate.now();
+        Lesson.selectedLesson = "";
 
         setDayView();
 
@@ -73,8 +74,11 @@ public class Timetable extends AppCompatActivity {
         deleteLesson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lessons = myDB.deleteLesson(Lesson.selectedLesson, lessons, currentUser);
-                setDayView();
+                if(Lesson.selectedLesson != "") {
+                    lessons = myDB.deleteLesson(Lesson.selectedLesson, lessons, currentUser);
+                    setDayView();
+                    Lesson.selectedLesson = "";
+                }
             }
         });
 

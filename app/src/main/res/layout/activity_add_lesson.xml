@@ -107,6 +107,7 @@
             android:layout_gravity="center"
             android:layout_weight="4"
             android:hint="@string/addLessonEditTextDurationHint"
+            android:maxLength="3"
             android:background="#10000000"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
