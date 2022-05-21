@@ -19,11 +19,13 @@ public class MainPage extends AppCompatActivity {
         calendarButton = findViewById(R.id.calendarButton);
         timetableButton = findViewById(R.id.timetableButton);
         TextView nextLesson = findViewById(R.id.nextLesson);
+        TextView currentUser = findViewById(R.id.currentUserMainPage);
 
         Bundle bundle = getIntent().getExtras();
         login = bundle.getString("Login");
 
-        nextLesson.setText("Następne zajęcia: " + "WPISAĆ" );
+        nextLesson.setText("Następne zajęcia: " + "WPISAĆ");
+        currentUser.setText("Zalogowano jako: " + login);
 
         calendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
