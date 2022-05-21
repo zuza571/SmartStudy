@@ -96,24 +96,24 @@
         android:id="@+id/backButtonRegister"
         android:layout_width="120dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="144dp"
         android:layout_marginBottom="84dp"
         android:background="@color/black"
         android:text="@string/registerButtonBack"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/registerButton"
         android:layout_width="120dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="144dp"
         android:layout_marginBottom="12dp"
         android:background="@color/black"
         android:text="@string/registerButtonRegister"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/backButtonRegister"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
