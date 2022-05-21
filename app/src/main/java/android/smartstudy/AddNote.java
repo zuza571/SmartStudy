@@ -38,7 +38,8 @@ public class AddNote extends AppCompatActivity {
         currentUserData.addAll(myDB.current_user_data(login));
         currentUser.current_user(currentUser, currentUserData);
 
-        noteDate.setText("Data: " + CalendarOperations.dateFormatter(CalendarOperations.selectedDate));
+        noteDate.setText("Data: " + CalendarOperations.selectedDate.getDayOfMonth() + " " +
+                CalendarOperations.polishMonths(CalendarOperations.selectedDate));
 
         cancelEdition.setOnClickListener(new View.OnClickListener() {
             @Override

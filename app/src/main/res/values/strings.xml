@@ -67,6 +67,7 @@
     <!-- Stringi w activity_main_page -->
     <string name="mainPageTextView">next</string>
     <string name="mainPageCurrentUser">currentUser</string>
+    <string name="mainPageLogOut">Wyloguj</string>
 
     <!-- Stringi w activity_register -->
     <string name="registerEditTextHintName">Imię</string>

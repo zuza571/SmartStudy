@@ -105,9 +105,9 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
     }
 
     public void setMonthView() {
-        currentMonth.setText(polishMonths(CalendarOperations.selectedDate));
-        previousMonth.setText(polishMonths(CalendarOperations.selectedDate.minusMonths(1)));
-        nextMonth.setText(polishMonths(CalendarOperations.selectedDate.plusMonths(1)));
+        currentMonth.setText(CalendarOperations.polishMonths(CalendarOperations.selectedDate));
+        previousMonth.setText(CalendarOperations.polishMonths(CalendarOperations.selectedDate.minusMonths(1)));
+        nextMonth.setText(CalendarOperations.polishMonths(CalendarOperations.selectedDate.plusMonths(1)));
 
         ArrayList<LocalDate> daysOfMonth = fillCalendar(CalendarOperations.selectedDate);
 
@@ -194,54 +194,5 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         bundle.putString("Login", login);
         intent.putExtras(bundle);
         startActivity(intent);
-    }
-
-    private String polishMonths(LocalDate date) {
-        String month = "";
-        for (int i = 0; i < 12; i++) {
-            String monthString = CalendarOperations.monthFormatter(date);
-            switch (monthString) {
-                case "1":
-                    month = "Styczeń";
-                    break;
-                case "2":
-                    month = "Luty";
-                    break;
-                case "3":
-                    month = "Marzec";
-                    break;
-                case "4":
-                    month = "Kwiecień";
-                    break;
-                case "5":
-                    month = "Maj";
-                    break;
-                case "6":
-                    month = "Czerwiec";
-                    break;
-                case "7":
-                    month = "Lipiec";
-                    break;
-                case "8":
-                    month = "Sierpień";
-                    break;
-                case "9":
-                    month = "Wrzesień";
-                    break;
-                case "10":
-                    month = "Październik";
-                    break;
-                case "11":
-                    month = "Listopad";
-                    break;
-                case "12":
-                    month = "Grudzień";
-                    break;
-                default:
-                    break;
-            }
-        }
-        String monthYear = month + " " + date.getYear();
-        return monthYear;
     }
 }

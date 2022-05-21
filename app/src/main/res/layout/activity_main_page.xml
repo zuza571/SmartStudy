@@ -7,24 +7,40 @@
     android:background="#435869"
     tools:context=".MainPage">
 
+    <Button
+        android:id="@+id/logOutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="664dp"
+        android:background="@drawable/logout_button"
+        android:gravity="center"
+        android:text="@string/mainPageLogOut"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/currentUserMainPage"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginBottom="685dp"
+        android:layout_marginBottom="680dp"
         android:lineSpacingExtra="10sp"
         android:text="@string/mainPageCurrentUser"
         android:textAlignment="textEnd"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="16sp"
-        android:layout_marginEnd="15dp"
         android:textStyle="bold|italic"
         android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="@+id/calendarButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -36,7 +52,7 @@
         android:lineSpacingExtra="10sp"
         android:text="@string/mainPageTextView"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="parent"

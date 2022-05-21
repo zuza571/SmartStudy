@@ -53,4 +53,53 @@ public class CalendarOperations {
         return daysOfMonth;
     }
 
+    public static String polishMonths(LocalDate date) {
+        String month = "";
+        for (int i = 0; i < 12; i++) {
+            String monthString = CalendarOperations.monthFormatter(date);
+            switch (monthString) {
+                case "1":
+                    month = "Styczeń";
+                    break;
+                case "2":
+                    month = "Luty";
+                    break;
+                case "3":
+                    month = "Marzec";
+                    break;
+                case "4":
+                    month = "Kwiecień";
+                    break;
+                case "5":
+                    month = "Maj";
+                    break;
+                case "6":
+                    month = "Czerwiec";
+                    break;
+                case "7":
+                    month = "Lipiec";
+                    break;
+                case "8":
+                    month = "Sierpień";
+                    break;
+                case "9":
+                    month = "Wrzesień";
+                    break;
+                case "10":
+                    month = "Październik";
+                    break;
+                case "11":
+                    month = "Listopad";
+                    break;
+                case "12":
+                    month = "Grudzień";
+                    break;
+                default:
+                    break;
+            }
+        }
+        String monthYear = month + " " + date.getYear();
+        return monthYear;
+    }
+
 }

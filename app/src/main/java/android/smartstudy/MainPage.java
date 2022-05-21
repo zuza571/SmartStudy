@@ -26,6 +26,7 @@ public class MainPage extends AppCompatActivity {
 
         calendarButton = findViewById(R.id.calendarButton);
         timetableButton = findViewById(R.id.timetableButton);
+        Button logOutButton = findViewById(R.id.logOutButton);
         TextView nextLesson = findViewById(R.id.nextLesson);
         TextView currentUser = findViewById(R.id.currentUserMainPage);
 
@@ -55,6 +56,13 @@ public class MainPage extends AppCompatActivity {
                 openTimetable();
             }
         });
+
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openStart();
+            }
+        });
     }
 
     public void openTimetable () {
@@ -70,6 +78,11 @@ public class MainPage extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("Login", login);
         intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void openStart() {
+        Intent intent = new Intent(this, Start.class);
         startActivity(intent);
     }
 
