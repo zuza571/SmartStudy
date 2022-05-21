@@ -148,6 +148,32 @@ public class MainPage extends AppCompatActivity {
                 lessonDayInt = 7 - Math.abs(currentDay - lessonDayInt);
                 lessonDay = lessons.get(i).getDayOfWeek();
             }
+
+            switch (lessonDay) {
+                case "Mon":
+                    lessonDay = "Pon";
+                    break;
+                case "Tue":
+                    lessonDay = "Wt";
+                    break;
+                case "Wed":
+                    lessonDay = "Śr";
+                    break;
+                case "Thu":
+                    lessonDay = "Czw";
+                    break;
+                case "Fri":
+                    lessonDay = "Pt";
+                    break;
+                case "Sat":
+                    lessonDay = "Sob";
+                    break;
+                case "Sun":
+                    lessonDay = "Niedz";
+                    break;
+                default:
+                    break;
+            }
             int currentTimeDifference = (lessons.get(i).getStartTime().getHour() - now.getHour()) * 60 + (lessons.get(i).getStartTime().getMinute() - now.getMinute()) + (lessonDayInt * 24 * 60);
 
             if (currentTimeDifference < timeDifference && currentTimeDifference > 0) {
