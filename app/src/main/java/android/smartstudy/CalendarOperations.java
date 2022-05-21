@@ -20,6 +20,11 @@ public class CalendarOperations {
         return date.format(formatter);
     }
 
+    public static String dayNumberFormatter(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("e");
+        return date.format(formatter);
+    }
+
     // numer miesiaca - do widoku
     public static String monthFormatter(LocalDate date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("L");

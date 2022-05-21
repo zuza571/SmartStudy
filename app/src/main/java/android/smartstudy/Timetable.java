@@ -167,34 +167,38 @@ public class Timetable extends AppCompatActivity {
 
     public static String polishDays(LocalDate date) {
         String day = "";
+        String dayString;
         for (int i = 0; i < 7; i++) {
-            String dayString = CalendarOperations.dayFormatter(date);
+            // dzien -1 bo inaczej wypisuje nr dnia tyg
+            dayString = CalendarOperations.dayNumberFormatter(date.minusDays(1));
+
             switch (dayString) {
-                case "Mon":
+                case "1":
                     day = "Poniedziałek";
                     break;
-                case "Tue":
+                case "2":
                     day = "Wtorek";
                     break;
-                case "Wed":
+                case "3":
                     day = "Środa";
                     break;
-                case "Thu":
+                case "4":
                     day = "Czwartek";
                     break;
-                case "Fri":
+                case "5":
                     day = "Piątek";
                     break;
-                case "Sat":
+                case "6":
                     day = "Sobota";
                     break;
-                case "Sun":
+                case "7":
                     day = "Niedziela";
                     break;
                 default:
                     break;
             }
         }
+        System.out.println(day);
         return day;
     }
 
