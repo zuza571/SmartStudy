@@ -170,7 +170,7 @@ public class Timetable extends AppCompatActivity {
         String dayString;
         for (int i = 0; i < 7; i++) {
             // dzien -1 bo inaczej wypisuje nr dnia tyg
-            dayString = CalendarOperations.dayNumberFormatter(date.minusDays(1));
+            dayString = CalendarOperations.dayNumberFormatter(date);
 
             switch (dayString) {
                 case "1":
