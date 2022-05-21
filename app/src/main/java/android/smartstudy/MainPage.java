@@ -94,38 +94,31 @@ public class MainPage extends AppCompatActivity {
 
         List<Lesson> lessons = myDB.getAllLessons(currentUserUser);
 
+        String lessonDay = "";
         for (int i = 0; i < lessons.size(); i++) {
             String lessonDayString = lessons.get(i).getDayOfWeek();
             int lessonDayInt = 0;
-            String lessonDay = "";
             switch (lessonDayString) {
                 case "Mon":
                     lessonDayInt = 1;
-                    lessonDay = "Pon";
                     break;
                 case "Tue":
                     lessonDayInt = 2;
-                    lessonDay = "Wto";
                     break;
                 case "Wed":
                     lessonDayInt = 3;
-                    lessonDay = "Śro";
                     break;
                 case "Thu":
                     lessonDayInt = 4;
-                    lessonDay = "Czw";
                     break;
                 case "Fri":
                     lessonDayInt = 5;
-                    lessonDay = "Pt";
                     break;
                 case "Sat":
                     lessonDayInt = 6;
-                    lessonDay = "Sob";
                     break;
                 case "Sun":
                     lessonDayInt = 7;
-                    lessonDay = "Nie";
                     break;
                 default:
                     break;
@@ -133,9 +126,11 @@ public class MainPage extends AppCompatActivity {
 
             if (lessonDayInt > currentDay) {
                 lessonDayInt = currentDay - lessonDayInt;
+                lessonDay = lessons.get(i).getDayOfWeek();
             } else if (currentDay == lessonDayInt){
                 if (now.getHour() > lessons.get(i).getStartTime().getHour()) {
                     lessonDayInt = 7;
+                    lessonDay = lessons.get(i).getDayOfWeek();
                 } else if (now.getHour() < lessons.get(i).getStartTime().getHour()) {
                     lessonDayInt = 0;
                     lessonDay = "dziś";
@@ -146,10 +141,38 @@ public class MainPage extends AppCompatActivity {
                     lessonDay = "dziś";
                 } else {
                     lessonDayInt = 0;
+                    lessonDay = lessons.get(i).getDayOfWeek();
                 }
             }
             else {
                 lessonDayInt = 7 - Math.abs(currentDay - lessonDayInt);
+                lessonDay = lessons.get(i).getDayOfWeek();
+            }
+
+            switch (lessonDay) {
+                case "Mon":
+                    lessonDay = "Pon";
+                    break;
+                case "Tue":
+                    lessonDay = "Wt";
+                    break;
+                case "Wed":
+                    lessonDay = "Śr";
+                    break;
+                case "Thu":
+                    lessonDay = "Czw";
+                    break;
+                case "Fri":
+                    lessonDay = "Pt";
+                    break;
+                case "Sat":
+                    lessonDay = "Sob";
+                    break;
+                case "Sun":
+                    lessonDay = "Niedz";
+                    break;
+                default:
+                    break;
             }
             int currentTimeDifference = (lessons.get(i).getStartTime().getHour() - now.getHour()) * 60 + (lessons.get(i).getStartTime().getMinute() - now.getMinute()) + (lessonDayInt * 24 * 60);
 
