@@ -11,11 +11,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import java.time.LocalDate;
-import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
 public class Timetable extends AppCompatActivity {
     private User currentUser;
@@ -91,9 +89,9 @@ public class Timetable extends AppCompatActivity {
     }
 
     private void setDayView () {
-        currentDay.setText(selectedDate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault()));
-        previousDay.setText(selectedDate.minusDays(1).getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault()));
-        nextDay.setText(selectedDate.plusDays(1).getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault()));
+        currentDay.setText(polishDays(selectedDate));
+        previousDay.setText(polishDays(selectedDate.minusDays(1)));
+        nextDay.setText(polishDays(selectedDate.plusDays(1)));
         fillLessonListView();
     }
 
@@ -153,7 +151,7 @@ public class Timetable extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public List<Lesson> sort(List<Lesson> lessons) {
+    public void sort(List<Lesson> lessons) {
         for (int i = 0; i < lessons.size() - 1; i++) {
             for (int j = i + 1; j < lessons.size(); j++) {
                 if (lessons.get(j).getStartTime().getHour() < lessons.get(i).getStartTime().getHour()) {
@@ -165,7 +163,39 @@ public class Timetable extends AppCompatActivity {
                 }
             }
         }
-        return lessons;
+    }
+
+    public static String polishDays(LocalDate date) {
+        String day = "";
+        for (int i = 0; i < 7; i++) {
+            String dayString = CalendarOperations.dayFormatter(date);
+            switch (dayString) {
+                case "Mon":
+                    day = "Poniedziałek";
+                    break;
+                case "Tue":
+                    day = "Wtorek";
+                    break;
+                case "Wed":
+                    day = "Środa";
+                    break;
+                case "Thu":
+                    day = "Czwartek";
+                    break;
+                case "Fri":
+                    day = "Piątek";
+                    break;
+                case "Sat":
+                    day = "Sobota";
+                    break;
+                case "Sun":
+                    day = "Niedziela";
+                    break;
+                default:
+                    break;
+            }
+        }
+        return day;
     }
 
 }

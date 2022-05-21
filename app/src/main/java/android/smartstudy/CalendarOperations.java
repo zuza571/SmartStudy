@@ -15,15 +15,14 @@ public class CalendarOperations {
         return date.format(formatter);
     }
 
-    // formatowanie daty na miesiac i rok - do widoku
-    public static String monthYearFormatter(LocalDate date)
-    {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
+    public static String dayFormatter(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E");
         return date.format(formatter);
     }
 
-    public static String dayFormatter(LocalDate date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E");
+    // numer miesiaca - do widoku
+    public static String monthFormatter(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("L");
         return date.format(formatter);
     }
 

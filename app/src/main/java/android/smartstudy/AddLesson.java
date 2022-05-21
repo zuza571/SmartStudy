@@ -13,10 +13,8 @@ import android.widget.Toast;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class AddLesson extends AppCompatActivity {
     private User currentUser;
@@ -47,7 +45,7 @@ public class AddLesson extends AppCompatActivity {
         currentUserData.addAll(myDB.current_user_data(login));
         currentUser.current_user(currentUser, currentUserData);
 
-        dayOfWeek.setText(CalendarOperations.selectedDate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault()));
+        dayOfWeek.setText(Timetable.polishDays(selectedDate));
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override

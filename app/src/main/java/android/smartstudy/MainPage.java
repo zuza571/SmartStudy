@@ -39,7 +39,7 @@ public class MainPage extends AppCompatActivity {
         currentUserUser.current_user(currentUserUser, currentUserData);
 
         String nextLessonString = nextLesson();
-        nextLesson.setText("Następne zajęcia: " + nextLessonString);
+        nextLesson.setText(nextLessonString);
         currentUser.setText("Zalogowano jako: " + login);
 
         calendarButton.setOnClickListener(new View.OnClickListener() {
@@ -82,63 +82,83 @@ public class MainPage extends AppCompatActivity {
         List<Lesson> lessons = myDB.getAllLessons(currentUserUser);
 
         for (int i = 0; i < lessons.size(); i++) {
-            String noteDayString = lessons.get(i).getDayOfWeek();
-            int noteDayInt = 0;
-            switch (noteDayString) {
+            String lessonDayString = lessons.get(i).getDayOfWeek();
+            int lessonDayInt = 0;
+            String lessonDay = "";
+            switch (lessonDayString) {
                 case "Mon":
-                    noteDayInt = 1;
+                    lessonDayInt = 1;
+                    lessonDay = "Pon";
                     break;
                 case "Tue":
-                    noteDayInt = 2;
+                    lessonDayInt = 2;
+                    lessonDay = "Wto";
                     break;
                 case "Wed":
-                    noteDayInt = 3;
+                    lessonDayInt = 3;
+                    lessonDay = "Śro";
                     break;
                 case "Thu":
-                    noteDayInt = 4;
+                    lessonDayInt = 4;
+                    lessonDay = "Czw";
                     break;
                 case "Fri":
-                    noteDayInt = 5;
+                    lessonDayInt = 5;
+                    lessonDay = "Pt";
                     break;
                 case "Sat":
-                    noteDayInt = 6;
+                    lessonDayInt = 6;
+                    lessonDay = "Sob";
                     break;
-                case "Sut":
-                    noteDayInt = 7;
+                case "Sun":
+                    lessonDayInt = 7;
+                    lessonDay = "Nie";
                     break;
                 default:
                     break;
             }
 
-            if (noteDayInt > currentDay) {
-                noteDayInt = currentDay - noteDayInt;
-            } else if (currentDay == noteDayInt && now.getHour() < lessons.get(i).getStartTime().getHour()){
-                noteDayInt = 7;
-            } else if (currentDay == noteDayInt && now.getHour() == lessons.get(i).getStartTime().getHour()) {
+            if (lessonDayInt > currentDay) {
+                lessonDayInt = currentDay - lessonDayInt;
+            } else if (currentDay == lessonDayInt){
+                lessonDay = "dziś";
+                if (now.getHour() > lessons.get(i).getStartTime().getHour()) {
+                    lessonDayInt = 7;
+                } else if (now.getHour() < lessons.get(i).getStartTime().getHour()) {
+                    lessonDayInt = 0;
+                }
+            } else if (currentDay == lessonDayInt && now.getHour() == lessons.get(i).getStartTime().getHour()) {
+                lessonDay = "dziś";
                 if (lessons.get(i).getStartTime().getMinute() > now.getMinute()) {
-                    noteDayInt = 7;
+                    lessonDayInt = 7;
                 } else {
-                    noteDayInt = 0;
+                    lessonDayInt = 0;
                 }
             }
             else {
-                noteDayInt = 7 - Math.abs(currentDay - noteDayInt);
+                lessonDayInt = 7 - Math.abs(currentDay - lessonDayInt);
             }
-            int helper = 0;
-            int currentTimeDifference = (lessons.get(i).getStartTime().getHour() - now.getHour()) * 60 + (lessons.get(i).getStartTime().getMinute() - now.getMinute()) + (noteDayInt * 24 * 60);
+            int currentTimeDifference = (lessons.get(i).getStartTime().getHour() - now.getHour()) * 60 + (lessons.get(i).getStartTime().getMinute() - now.getMinute()) + (lessonDayInt * 24 * 60);
+
             if (currentTimeDifference < timeDifference && currentTimeDifference > 0) {
                 timeDifference = currentTimeDifference;
-                nextLesson = lessons.get(i).getText();
-                helper = 1;
-            } else if (helper == 0){
+                nextLesson = lessons.get(i).getText() + " (" + lessonDay + " " + lessons.get(i).getStartTime() + ") " +
+                        lessons.get(i).getRoom();
+            } else {
                 currentTimeDifference = Math.abs(currentTimeDifference);
                 if (currentTimeDifference < timeDifference) {
                     timeDifference = currentTimeDifference;
-                    nextLesson = lessons.get(i).getText();
+                    nextLesson = lessons.get(i).getText() + " (" + lessonDay + " " + lessons.get(i).getStartTime() + ") " +
+                            lessons.get(i).getRoom();
                 }
             }
         }
 
-        return nextLesson;
+        String next = "";
+
+        if (!nextLesson.equals(""))
+            next = "Następne zajęcia: " + nextLesson;
+
+        return next;
     }
 }
