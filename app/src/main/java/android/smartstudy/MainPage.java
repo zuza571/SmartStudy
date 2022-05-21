@@ -146,6 +146,7 @@ public class MainPage extends AppCompatActivity {
             }
             else {
                 lessonDayInt = 7 - Math.abs(currentDay - lessonDayInt);
+                lessonDay = lessons.get(i).getDayOfWeek();
             }
             int currentTimeDifference = (lessons.get(i).getStartTime().getHour() - now.getHour()) * 60 + (lessons.get(i).getStartTime().getMinute() - now.getMinute()) + (lessonDayInt * 24 * 60);
 
