@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -114,9 +115,10 @@ public class Timetable extends AppCompatActivity {
         for (int i = 0; i < lessons.size(); i++) {
             if (CalendarOperations.dayFormatter(selectedDate).equals(lessons.get(i).getDayOfWeek())) {
                 dailyLessons.add(lessons.get(i));
-                System.out.println(lessons.get(i).getText());
             }
         }
+
+        sort(dailyLessons);
 
         String [] lessonsToString = new String[dailyLessons.size()];
 
@@ -146,4 +148,16 @@ public class Timetable extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
+    public List<Lesson> sort(List<Lesson> lessons) {
+        for (int i = 0; i < lessons.size() - 1; i++) {
+            for (int j = i + 1; j < lessons.size(); j++) {
+                if (lessons.get(j).getStartTime().getHour() < lessons.get(i).getStartTime().getHour()) {
+                    Collections.swap(lessons, lessons.indexOf(lessons.get(j)), lessons.indexOf(lessons.get(i)));
+                }
+            }
+        }
+        return lessons;
+    }
+
 }
