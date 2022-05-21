@@ -134,16 +134,16 @@ public class MainPage extends AppCompatActivity {
             if (lessonDayInt > currentDay) {
                 lessonDayInt = currentDay - lessonDayInt;
             } else if (currentDay == lessonDayInt){
-                lessonDay = "dziś";
                 if (now.getHour() > lessons.get(i).getStartTime().getHour()) {
                     lessonDayInt = 7;
                 } else if (now.getHour() < lessons.get(i).getStartTime().getHour()) {
                     lessonDayInt = 0;
+                    lessonDay = "dziś";
                 }
             } else if (currentDay == lessonDayInt && now.getHour() == lessons.get(i).getStartTime().getHour()) {
-                lessonDay = "dziś";
                 if (lessons.get(i).getStartTime().getMinute() > now.getMinute()) {
                     lessonDayInt = 7;
+                    lessonDay = "dziś";
                 } else {
                     lessonDayInt = 0;
                 }
