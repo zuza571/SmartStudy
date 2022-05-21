@@ -1,5 +1,7 @@
 package android.smartstudy;
 
+import static android.smartstudy.CalendarOperations.selectedDate;
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -61,11 +63,20 @@ public class AddLesson extends AppCompatActivity {
                 int hour = Integer.parseInt(hours.getText().toString());
                 int mins = Integer.parseInt(minutes.getText().toString());
                 String hoursAndMinutes;
-                if (hour < 10 && mins != 0) {
+                if(hour == 00 && mins == 0) {
+                    hoursAndMinutes = "00:00";
+                }
+                else if (hour == 00 && mins != 0) {
+                    hoursAndMinutes = "00:" + mins;
+                }
+                else if (hour < 10 && mins != 0) {
                    hoursAndMinutes = "0" + hour + ":" + mins;
                 }
                 else if (hour < 10 && mins == 0) {
                     hoursAndMinutes = "0" + hour + ":00";
+                }
+                else if (hour >= 10 && mins == 0) {
+                    hoursAndMinutes = hour + ":00";
                 } else {
                     hoursAndMinutes = hour + ":" + mins;
                 }
@@ -75,14 +86,98 @@ public class AddLesson extends AppCompatActivity {
 
                 if (newLessonName.length() > 1 && hour >= 0 && hour <= 23 && mins >= 0 && mins <= 59
                 && newLessonRoom.length() > 0 && newLessonDuration >= 20 && newLessonDuration <= 200) {
+
                     LocalTime startTime = LocalTime.parse(hoursAndMinutes, DateTimeFormatter.ISO_LOCAL_TIME);
-                    Lesson newLesson = new Lesson(startTime, CalendarOperations.dayFormatter(CalendarOperations.selectedDate),
-                            newLessonRoom, newLessonName, newLessonDuration, currentUser);
-                    myDB.addLesson(newLesson);
-                    saveLesson();
+
+                    List<Lesson> lessons = new ArrayList<>();
+                    lessons = myDB.getAllLessons(currentUser);
+                    List<Lesson> dailyLessons = new ArrayList<>();
+                    for (int i = 0; i < lessons.size(); i++) {
+                        if (CalendarOperations.dayFormatter(selectedDate).equals(lessons.get(i).getDayOfWeek())) {
+                            dailyLessons.add(lessons.get(i));
+                        }
+                    }
+
+                    boolean collision = false;
+                    for (int i = 0; i < dailyLessons.size(); i++) {
+                        int hours = dailyLessons.get(i).getDuration()/60;
+                        int minutes = dailyLessons.get(i).getDuration() - 60*hours;
+                        LocalTime endTime = dailyLessons.get(i).getStartTime().plusHours(hours).plusMinutes(minutes);
+
+                        if (startTime.getHour() > dailyLessons.get(i).getStartTime().getHour()) {
+                            if (startTime.getHour() < endTime.getHour()) {
+                                collision = true;
+                            } else if (startTime.getHour() == endTime.getHour() && startTime.getMinute() < endTime.getMinute()) {
+                                collision = true;
+                            }
+                        }
+
+                        if (startTime.getHour() == dailyLessons.get(i).getStartTime().getHour()) {
+                            if (startTime.getMinute() > dailyLessons.get(i).getStartTime().getMinute()) {
+                                if (startTime.getHour() < endTime.getHour()) {
+                                    collision = true;
+                                } else if (startTime.getHour() == endTime.getHour() && startTime.getMinute() < endTime.getMinute()) {
+                                    collision = true;
+                                }
+                            }
+                        }
+
+                        int hoursNewLesson = newLessonDuration/60;
+                        int minutesNewLesson = newLessonDuration - 60*hoursNewLesson;
+                        LocalTime endTimeNewLesson = startTime.plusHours(hoursNewLesson).plusMinutes(minutesNewLesson);
+
+                        if (endTimeNewLesson.getHour() > dailyLessons.get(i).getStartTime().getHour()) {
+                            if (endTimeNewLesson.getHour() < endTime.getHour()) {
+                                collision = true;
+                            } else if (endTimeNewLesson.getHour() == endTime.getHour() && endTimeNewLesson.getMinute() < endTime.getMinute()) {
+                                collision = true;
+                            }
+                        }
+
+                        if (endTimeNewLesson.getHour() == dailyLessons.get(i).getStartTime().getHour()) {
+                            if (endTimeNewLesson.getMinute() > dailyLessons.get(i).getStartTime().getMinute()) {
+                                if (endTimeNewLesson.getHour() < endTime.getHour()) {
+                                    collision = true;
+                                } else if (endTimeNewLesson.getHour() == endTime.getHour() && endTimeNewLesson.getMinute() < endTime.getMinute()) {
+                                    collision = true;
+                                }
+                            }
+                        }
+
+                        if (startTime.getHour() < dailyLessons.get(i).getStartTime().getHour() && endTimeNewLesson.getHour() > endTime.getHour()) {
+                            collision = true;
+                        }
+
+                        if (startTime.getHour() == dailyLessons.get(i).getStartTime().getHour() && endTimeNewLesson.getHour() > endTime.getHour()) {
+                            if (startTime.getMinute() < dailyLessons.get(i).getStartTime().getMinute()) {
+                                collision = true;
+                            }
+                        }
+
+                        if (startTime.getHour() < dailyLessons.get(i).getStartTime().getHour() && endTimeNewLesson.getHour() == endTime.getHour()) {
+                            if (endTimeNewLesson.getMinute() > endTime.getMinute()) {
+                                collision = true;
+                            }
+                        }
+
+                        if (startTime.getHour() == dailyLessons.get(i).getStartTime().getHour() && endTimeNewLesson.getHour() == endTime.getHour()) {
+                            if (startTime.getMinute() < dailyLessons.get(i).getStartTime().getMinute() && endTimeNewLesson.getMinute() > endTime.getMinute()) {
+                                collision = true;
+                            }
+                        }
+
+                    }
+
+                    if (!collision) {
+                        Lesson newLesson = new Lesson(startTime, CalendarOperations.dayFormatter(CalendarOperations.selectedDate),
+                                newLessonRoom, newLessonName, newLessonDuration, currentUser);
+                        myDB.addLesson(newLesson);
+                        saveLesson();
+                    } else {
+                        Toast.makeText(AddLesson.this, "Nowa lekcja koliduje z inną!", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(AddLesson.this, "Wprowadzone dane są niepoprawne lub za krótkie",
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddLesson.this, "Wprowadzone dane są niepoprawne lub za krótkie", Toast.LENGTH_SHORT).show();
                 }
             }
         });
