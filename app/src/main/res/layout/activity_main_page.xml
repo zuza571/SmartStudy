@@ -1,91 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="#435869"
     tools:context=".MainPage">
 
-    <Button
-        android:id="@+id/logOutButton"
-        android:layout_width="80dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="680.5dp"
-        android:background="@drawable/outline"
-        android:gravity="center"
-        android:text="@string/mainPageLogOut"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.98"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/currentUserMainPage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="0.5dp"
-        android:layout_marginBottom="680dp"
-        android:background="@drawable/outline"
-        android:padding="7dp"
-        android:lineSpacingExtra="10sp"
-        android:text="@string/mainPageCurrentUser"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="italic"
-        android:typeface="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/calendarButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/nextLesson"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="605dp"
-        android:padding="7dp"
-        android:background="@drawable/outline"
-        android:lineSpacingExtra="10sp"
-        android:text="@string/mainPageTextView"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="17.5sp"
-        android:typeface="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
 
-    <Button
-        android:id="@+id/timetableButton"
-        android:layout_width="406dp"
-        android:layout_height="300dp"
-        android:layout_marginBottom="300dp"
-        android:background="@drawable/timetable"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/currentUserMainPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/outline"
+            android:padding="7dp"
+            android:text="@string/mainPageCurrentUser"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            android:textSize="16sp"/>
 
-    <Button
-        android:id="@+id/calendarButton"
-        android:layout_width="406dp"
-        android:layout_height="300dp"
-        android:layout_marginBottom="0dp"
-        android:background="@drawable/calendar"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/logOutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/outline"
+            android:padding="7dp"
+            android:text="@string/mainPageLogOut"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
 
-</android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="0dp">
+
+        <TextView
+            android:id="@+id/nextLesson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/timetableButton"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/outline"
+            android:padding="7dp"
+            android:text="@string/mainPageTextView"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="17.5sp" />
+
+        <Button
+            android:id="@+id/timetableButton"
+            android:layout_width="match_parent"
+            android:layout_height="275dp"
+            android:layout_above="@+id/calendarButton"
+            android:layout_marginBottom="0dp"
+            android:layout_weight="300"
+            android:background="@drawable/timetable" />
+
+        <Button
+            android:id="@+id/calendarButton"
+            android:layout_width="match_parent"
+            android:layout_height="275dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/calendar"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+</LinearLayout>
