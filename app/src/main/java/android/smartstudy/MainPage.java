@@ -174,7 +174,7 @@ public class MainPage extends AppCompatActivity {
                     break;
             }
 
-            int currentTimeDifference = (lessons.get(i).getStartTime().getHour() - now.getHour() * 60) + (lessons.get(i).getStartTime().getMinute() - now.getMinute()) + (lessonDayInt * 24 * 60);
+            int currentTimeDifference = (lessons.get(i).getStartTime().getHour() - now.getHour()) * 60 + (lessons.get(i).getStartTime().getMinute() - now.getMinute()) + (lessonDayInt * 24 * 60);
 
             if (currentTimeDifference < timeDifference && currentTimeDifference > 0) {
                 timeDifference = currentTimeDifference;
