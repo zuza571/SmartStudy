@@ -124,7 +124,7 @@ public class MainPage extends AppCompatActivity {
             }
 
             if (lessonDayInt > currentDay) {
-                lessonDayInt = currentDay - lessonDayInt;
+                lessonDayInt = lessonDayInt - currentDay;
                 lessonDay = lessons.get(i).getDayOfWeek();
             } else if (currentDay == lessonDayInt){
                 if (now.getHour() > lessons.get(i).getStartTime().getHour()) {
