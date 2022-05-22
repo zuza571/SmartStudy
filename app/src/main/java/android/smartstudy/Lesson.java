@@ -3,7 +3,6 @@ package android.smartstudy;
 import java.time.LocalTime;
 
 public class Lesson {
-    private int id;
     private final LocalTime startTime;
     private final String dayOfWeek;
     private final String room;
@@ -19,10 +18,6 @@ public class Lesson {
         this.text = text;
         this.duration = duration;
         this.lessonOwner = lessonOwner;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public LocalTime getStartTime() {
@@ -47,10 +42,6 @@ public class Lesson {
 
     public User getLessonOwner() {
         return lessonOwner;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setText(String text) {

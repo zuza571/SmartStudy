@@ -4,8 +4,8 @@ import java.time.LocalDate;
 
 public class Note {
     private String text;
-    private LocalDate date;
-    private User noteOwner;
+    private final LocalDate date;
+    private final User noteOwner;
     public static String selectedNote = "";
 
     public Note (String text, LocalDate date, User noteOwner) {
@@ -28,14 +28,6 @@ public class Note {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public void setNoteOwner(User noteOwner) {
-        this.noteOwner = noteOwner;
     }
 
     @Override

@@ -72,10 +72,14 @@ public class Timetable extends AppCompatActivity {
         deleteLesson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Lesson.selectedLesson != "") {
-                    lessons = myDB.deleteLesson(Lesson.selectedLesson, lessons, currentUser);
-                    setDayView();
-                    Lesson.selectedLesson = "";
+                if(!Lesson.selectedLesson.equals("")) {
+                    for (int i = 0; i < lessons.size(); i++) {
+                        if (Lesson.selectedLesson.equals(lessons.get(i).getText()) && CalendarOperations.dayFormatter(selectedDate).equals(lessons.get(i).getDayOfWeek())) {
+                            lessons = myDB.deleteLesson(Lesson.selectedLesson, lessons.get(i).getDayOfWeek(), lessons, currentUser);
+                            setDayView();
+                            Lesson.selectedLesson = "";
+                        }
+                    }
                 }
             }
         });
@@ -169,7 +173,8 @@ public class Timetable extends AppCompatActivity {
         String day = "";
         String dayString;
         for (int i = 0; i < 7; i++) {
-            dayString = CalendarOperations.dayNumberFormatter(date);
+            // minusDays do emulatora -> przesuniecie o 1 dzien
+            dayString = CalendarOperations.dayNumberFormatter(date.minusDays(1));
 
             switch (dayString) {
                 case "1":

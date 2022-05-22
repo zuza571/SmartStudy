@@ -80,10 +80,15 @@ public class CalendarMain extends AppCompatActivity implements CalendarAdapter.O
         deleteNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Note.selectedNote != "") {
-                    notesList = myDB.deleteNote(Note.selectedNote, notesList, currentUser);
-                    setMonthView();
-                    Note.selectedNote = "";
+                if(!Note.selectedNote.equals("")) {
+                    for( int i = 0; i < notesList.size(); i++) {
+                        if (Note.selectedNote.equals(notesList.get(i).getText()) &&
+                                CalendarOperations.dateFormatter(CalendarOperations.selectedDate).equals(CalendarOperations.dateFormatter(notesList.get(i).getDate()))) {
+                            notesList = myDB.deleteNote(Note.selectedNote, CalendarOperations.dateFormatter(notesList.get(i).getDate()), notesList, currentUser);
+                            setMonthView();
+                            Note.selectedNote = "";
+                        }
+                    }
                 }
             }
         });

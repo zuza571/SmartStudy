@@ -234,9 +234,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return lessons;
     }
 
-    List<Note> deleteNote(String text, List<Note> notes, User currentUser) {
+    List<Note> deleteNote(String text, String day, List<Note> notes, User currentUser) {
         SQLiteDatabase db = this.getWritableDatabase();
-        long result = db.delete(TABLE_NAME_NOTE, "Text=?", new String[]{text});
+        long result = db.delete(TABLE_NAME_NOTE, "Text=? and LocalDate=?", new String[]{text, day});
         if(result == -1){
             Toast.makeText(context, "Nie udało się usunąć notatki.", Toast.LENGTH_SHORT).show();
             return notes;
@@ -249,9 +249,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    List<Lesson> deleteLesson(String text, List<Lesson> lessons, User currentUser) {
+    List<Lesson> deleteLesson(String text, String dayOfWeek, List<Lesson> lessons, User currentUser) {
         SQLiteDatabase db = this.getWritableDatabase();
-        long result = db.delete(TABLE_NAME_LESSON, "Text=?", new String[]{text});
+        long result = db.delete(TABLE_NAME_LESSON, "Text=? and Day=?" , new String[]{text, dayOfWeek});
         if(result == -1){
             Toast.makeText(context, "Nie udało się usunąć lekcji.", Toast.LENGTH_SHORT).show();
             return lessons;
