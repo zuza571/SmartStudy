@@ -149,9 +149,6 @@ public class MainPage extends AppCompatActivity {
             }
 
             switch (lessonDay) {
-                case "Mon":
-                    lessonDay = "Pon";
-                    break;
                 case "Tue":
                     lessonDay = "Wt";
                     break;
