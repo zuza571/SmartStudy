@@ -1,4 +1,4 @@
-# <img src="./images/icon.png" data-canonical-src="./images/icon.png" width="40" height="40" /> SmartStudy - Scheduling and Planning App  
+# <img src="./images/icon.png" data-canonical-src="./images/icon.png" width="40" height="40" /> SmartStudy - Scheduling App  
 
 ## Table of contents
 * [General info](#general-info)
@@ -20,7 +20,8 @@ SmartStudy is an Android App which will help everyone to manage time and organis
 
 <img src="./images/fun1.jpg" data-canonical-src="./images/fun1.jpg" width="183" height="340"/>
 
-- Scheduling a week - adding/deleting lessons with necessary details
+- Scheduling a week - adding lessons with necessary details
+- Deleting lessons
 
 <img src="./images/fun2.jpg" data-canonical-src="./images/fun2.jpg" width="183" height="340"/>
 
