@@ -44,7 +44,7 @@ To run this application, You have to download .apk file from the app_setup direc
 You can also test it on the Android Studio emulator by cloning the code. 
 
 ## Sources
-This app is inspired by Calendar App for Android by [@codeWithCal](https://github.com/codeWithCal/CalendarTutorialAndroidStudio).
+This app is inspired by Calendar App for Android: [@codeWithCal](https://github.com/codeWithCal/CalendarTutorialAndroidStudio).
 
 ## Authors 
 - [Zuzanna Pietrzak](https://github.com/zuza571)
