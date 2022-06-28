@@ -1,4 +1,4 @@
-# <img src="./images/icon.png" data-canonical-src="./images/icon.png" width="40" height="40"/> SmartStudy - Scheduling and Planning App  
+# <img src="./images/icon.png" data-canonical-src="./images/icon.png" width="40" height="40" /> SmartStudy - Scheduling and Planning App  
 
 ## Table of contents
 * [General info](#general-info)
@@ -18,15 +18,15 @@ SmartStudy is an Android App which will help everyone to manage time and organis
 - Adding/deleting notes in calendar
 - Displaying a list of notes below the calendar
 
-<img src="./images/fun1.jpg" data-canonical-src="./images/fun1.jpg" />
+<img src="./images/fun1.jpg" data-canonical-src="./images/fun1.jpg" width="183" height="340"/>
 
 - Scheduling a week - adding/deleting lessons with necessary details
 
-<img src="./images/fun2.jpg" data-canonical-src="./images/fun2.jpg" />
+<img src="./images/fun2.jpg" data-canonical-src="./images/fun2.jpg" width="183" height="340"/>
 
 - Displaying the next lesson
 
-<img src="./images/main_page.png" data-canonical-src="./images/main_page.png" width="210" height="392"/>
+<img src="./images/main_page.png" data-canonical-src="./images/main_page.png" width="183" height="340"/>
 
 ## Technologies
 App was created with:
